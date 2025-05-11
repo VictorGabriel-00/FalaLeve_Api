@@ -1,11 +1,12 @@
 package model;
 
-public class Usuario {
+public abstract class Usuario {
     public String nome;
     private String email;
     private String senha;
     public int DataAniversario;
 
+    public abstract String escolha(String ump);
 
     public Usuario(String nome, String email, String senha, int DataAniversario) {
         this.nome = nome;

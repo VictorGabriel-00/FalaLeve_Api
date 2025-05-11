@@ -4,8 +4,11 @@ import controller.GerarIdMedico;
 
 public class Medico extends Usuario {
     GerarIdMedico gerarIdMedico = new GerarIdMedico();
+    @Override
+    public String escolha(String ump) {
 
-
+        return escolha(ump);
+    }
 
     private int crm;
 
