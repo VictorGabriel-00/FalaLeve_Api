@@ -1,13 +1,14 @@
 package view;
 
-import controller.AddUsuario;
+
+import controller.GerenciarUsuario;
 
 import java.util.Scanner;
 
 public class Menu {
+    GerenciarUsuario grUsuario = new GerenciarUsuario();
     Scanner input = new Scanner(System.in);
     public int op;
-    AddUsuario addUsuario = new AddUsuario();
     public int menu(){
 
         do {
@@ -20,7 +21,7 @@ public class Menu {
             op = input.nextInt();
             switch (op) {
                 case 1:
-                    addUsuario.addusuario();
+                    grUsuario.escolha();
                     break;
                 case 2:
                     break;

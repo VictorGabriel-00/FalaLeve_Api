@@ -1,25 +1,17 @@
 package model;
 
-import controller.GerarIdMedico;
+import controller.GerarIdUsuario;
 
 public class Medico extends Usuario {
-    GerarIdMedico gerarIdMedico = new GerarIdMedico();
-    @Override
-    public String escolha(String ump) {
+    private String crm;
 
-        return escolha(ump);
-    }
-
-    private int crm;
-
-
-    public int getCrm() {
+    public String getCrm() {
         return crm;
     }
-
-    public void setCrm(int crm) {
+    public void setCrm(String crm) {
         this.crm = crm;
     }
+
 
 
 }
