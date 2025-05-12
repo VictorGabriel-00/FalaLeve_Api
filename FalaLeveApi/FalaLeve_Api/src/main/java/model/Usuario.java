@@ -3,12 +3,12 @@ package model;
 public class Usuario {
     public String nome;
     private String email;
-    private String senha;
+    private int senha;
     public int DataAniversario;
     public String op;
 
 
-    public Usuario(String nome, String email, String senha, int DataAniversario) {
+    public Usuario(String nome, String email, int senha, int DataAniversario) {
         this.nome = nome;
         this.setEmail(email);
         this.setSenha(senha);
@@ -31,19 +31,22 @@ public class Usuario {
         this.email = email;
     }
 
-    public void setSenha(String senha) {
+    public void setSenha(int senha) {
         this.senha = senha;
     }
 
-    public String verificarSenha(String op){
+    public int verificarSenha(int op){
         int senhaInt;
-        senhaInt = Integer.parseInt(this.senha);
+        senhaInt = String.valueOf(senha).length();
         if (senhaInt < 5){
             System.out.println("Senha Muito fraca,crie outra senha");
             this.op = "Tente novamente";
+        }else{
+            System.out.println("Senha criada com sucesso");
+            this.op = "Senha criada com sucesso";
         }
 
-        return this.senha;
+        return senha;
     }
 
 }

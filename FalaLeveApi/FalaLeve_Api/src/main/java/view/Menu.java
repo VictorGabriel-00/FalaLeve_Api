@@ -26,6 +26,7 @@ public class Menu {
                 case 2:
                     break;
                 case 3:
+                    grUsuario.listarusuario(null ,0);
                     break;
                 case 4:
                     break;

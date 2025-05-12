@@ -1,15 +1,13 @@
 package model;
 
-import controller.GerarIdUsuario;
-
 public class Medico extends Usuario {
-    private String crm;
+    private String Crm;
 
     public String getCrm() {
-        return crm;
+        return Crm;
     }
     public void setCrm(String crm) {
-        this.crm = crm;
+        this.Crm = crm;
     }
 
 

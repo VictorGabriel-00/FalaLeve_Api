@@ -9,10 +9,6 @@ import java.util.Scanner;
 public class MenuPrincipal {
     public static void main(String[] args) {
         Menu menu = new Menu();
-        Usuario medico = new Medico();
-        Usuario usuarioNaoVerbal = new UsuarioNaoVerbal();
-        Scanner input = new Scanner(System.in);
-
 
         do {
             menu.menu();
