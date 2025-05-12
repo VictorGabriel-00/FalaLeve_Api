@@ -1,6 +1,7 @@
 package model;
 
 public class Usuario {
+
     public String nome;
     private String email;
     private int senha;
@@ -48,5 +49,7 @@ public class Usuario {
 
         return senha;
     }
+
+
 
 }
