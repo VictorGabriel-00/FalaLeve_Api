@@ -29,7 +29,7 @@ public class GerarIdUsuario {
                 idN = "RES";
                 idFixo = idN + "-" + id;
             }else{
-                idN = "USN";
+                idN = "PAC";
                 idFixo = idN + "-" + id;
             }
 

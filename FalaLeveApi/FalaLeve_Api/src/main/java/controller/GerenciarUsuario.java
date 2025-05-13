@@ -11,14 +11,13 @@ import java.util.Scanner;
 public class GerenciarUsuario{
     GerarIdUsuario opGeraId = new GerarIdUsuario();
     GerarIdUsuario gerarIdUsuario = new GerarIdUsuario();
-    Usuario usNaoVerbal = new UsuarioNaoVerbal();
+    Usuario usNaoVerbal;
     Usuario medico = new Medico();
     Usuario usuario;
     Scanner input = new Scanner(System.in);
     public static String op;
-    String nome,email,senha;
-    int dataAnicersario;
-
+    String dataAniversario,nome,email,senha,primeiro,segundo,terceiro,cor,sons,animacao;
+    int grau,tamanho;
 
 
     public void criarUsuario(GerirUsuario lista) {
@@ -35,7 +34,7 @@ public class GerenciarUsuario{
         System.out.println("Informe o email do Usuario: ");
         email = input.nextLine();
         usuario.setEmail(email);
-        System.out.println("Crie uma senha para o Usuario (Apenas Numeros): ");
+        System.out.println("Crie uma senha para o Usuario : ");
         senha = input.next();
         usuario.setSenha(senha);
         usuario.verificarSenha(senha);
@@ -47,9 +46,14 @@ public class GerenciarUsuario{
             usuario.verificarSenha(senha);
         }
 
-        System.out.println("Informe a data de aniversario do Usuario(Apenas numeros): ");
-        dataAnicersario = input.nextInt();
-        usuario.setDataAniversario(dataAnicersario);
+        System.out.println("Informe a data de nascimento do Usuario(Apenas numeros): ");
+        dataAniversario = input.next();
+        String contagem = String.valueOf(dataAniversario);
+        primeiro = contagem.substring(0,2);
+        segundo = contagem.substring(2,4);
+        terceiro = contagem.substring(4, 8);
+        dataAniversario = primeiro + "/" + segundo  + "/" + terceiro;
+        usuario.setDataAniversario(dataAniversario);
 
 
         if(op.equalsIgnoreCase("medico")){
@@ -59,22 +63,25 @@ public class GerenciarUsuario{
 
         }else if(op.equalsIgnoreCase("Usuario Nao Verbal")
                 ||op.equalsIgnoreCase("Usuario Não Verbal")){
+            usNaoVerbal = new UsuarioNaoVerbal();
             System.out.println("Monte seu Prontuario: ");
             System.out.println("Informe qual o Grau da sua neurodivergencia: ");
-            int grau = input.nextInt();
+            grau = input.nextInt();
             System.out.println("Informe cores que são agradaveis para voce: ");
-            String cor = input.next();
+            cor = input.next();
             cor = input.nextLine();
             System.out.println("Informe os sons que voce gosta de ouvir: ");
-            String sons = input.next();
+            sons = input.next();
             System.out.println("Informe o Tamano de fonte que voce acha confortavel: ");
-            int tamanho = input.nextInt();;
+            tamanho = input.nextInt();;
             System.out.println("Informe se vc gosta dos movimentos com ou sem animalção: ");
             String animacao = input.next();
 
-            usNaoVerbal.setNome(nome);
-            usNaoVerbal.setEmail(email);
-            usNaoVerbal.setSenha(senha);
+            ((UsuarioNaoVerbal) usNaoVerbal).setGrau(grau);
+            ((UsuarioNaoVerbal) usNaoVerbal).setCor(cor);
+            ((UsuarioNaoVerbal) usNaoVerbal).setSon(sons);
+            ((UsuarioNaoVerbal) usNaoVerbal).setFonteTamanho(tamanho);
+            ((UsuarioNaoVerbal) usNaoVerbal).setAnimacao(animacao);
         }
         String idPerma;
         idPerma = gerarIdUsuario.GerenciarIdUsuario();
@@ -85,11 +92,12 @@ public class GerenciarUsuario{
 
 
     public void listarusuario(GerirUsuario lista) {
-        System.out.println("Usuarios cadastrados: " + ((RepositorioUsuarioLista) lista).listarUsuarios());
+        System.out.println("Usuarios cadastrados: \n " + ((RepositorioUsuarioLista) lista).listarUsuarios());
             if (op.equalsIgnoreCase("medico")) {
                 System.out.println("CRM: " + ((Medico) medico).getCrm());
             } else if (op.equalsIgnoreCase("Usuario Nao Verbal")
                     ||op.equalsIgnoreCase("Usuario Não Verbal")){
+                System.out.println("Prontuario: \n" + ((UsuarioNaoVerbal) usNaoVerbal).getProntuario());
 
             }
     }

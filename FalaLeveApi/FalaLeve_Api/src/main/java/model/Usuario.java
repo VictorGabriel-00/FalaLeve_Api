@@ -11,7 +11,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private int DataAniversario;
+    private String DataAniversario;
     public String op;
 
     public String getIdUsuario() {
@@ -30,15 +30,15 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public int getDataAniversario() {
+    public String getDataAniversario() {
         return DataAniversario;
     }
 
-    public void setDataAniversario(int dataAniversario) {
+    public void setDataAniversario(String dataAniversario) {
         DataAniversario = dataAniversario;
     }
 
-    public Usuario(String nome, String email, String senha, int DataAniversario) {
+    public Usuario(String nome, String email, String senha, String DataAniversario) {
         this.nome = nome;
         this.setEmail(email);
         this.setSenha(senha);
