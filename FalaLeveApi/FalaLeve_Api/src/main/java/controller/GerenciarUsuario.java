@@ -9,6 +9,7 @@ import view.Menu;
 import java.util.Scanner;
 
 public class GerenciarUsuario implements GerirUsuario {
+    GerarIdUsuario opGeraId = new GerarIdUsuario();
     GerarIdUsuario gerarIdUsuario = new GerarIdUsuario();
     Usuario usNaoVerbal = new UsuarioNaoVerbal();
     Usuario Medico = new Medico();
@@ -20,6 +21,7 @@ public class GerenciarUsuario implements GerirUsuario {
         GerenciarUsuario grUsuario = new GerenciarUsuario();
         System.out.println("Informe qual o tipo de usuario que deseja adicionar(Medico,Parente Responsavel,Usuario Não Verbal):");
         op = input.nextLine();
+        opGeraId.op = op;
         grUsuario.addusuario(null,null,0,0);
         return op;
     }
@@ -46,9 +48,6 @@ public class GerenciarUsuario implements GerirUsuario {
 
         System.out.println("Informe a data de aniversario do Usuario(Apenas numeros): ");
         dataAnicersario = input.nextInt();
-
-
-        gerarIdUsuario.nome = nome;
         usuario.setEmail(email);
 
 
@@ -76,7 +75,6 @@ public class GerenciarUsuario implements GerirUsuario {
             usNaoVerbal.setEmail(email);
             usNaoVerbal.setSenha(senha);
         }
-
     }
 
     @Override
@@ -93,13 +91,13 @@ public class GerenciarUsuario implements GerirUsuario {
 
     @Override
     public void listarusuario(String email, int senha) {
-        GerenciarUsuario idUsuario = new GerenciarUsuario();
+        Usuario usuarioLis = new Usuario();
         String idPerma;
         idPerma = gerarIdUsuario.GerenciarIdUsuario();
 
 
             System.out.println("Id: " + idPerma);
-            System.out.println("Nome: " + gerarIdUsuario.nome);
+            System.out.println("Nome: " + usNaoVerbal.nome);
             System.out.println("Email: " + usuario.getEmail());
             System.out.println("Data de Aniversario: " + usuario.DataAniversario);
 
