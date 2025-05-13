@@ -1,6 +1,12 @@
 package model;
 
+import controller.GerarIdUsuario;
+import controller.GerenciarUsuario;
+import interfaces.GerirUsuario;
+
 public class Usuario {
+
+
     private String idUsuario;
     private String nome;
     private String email;
@@ -75,8 +81,10 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "[Nome: " + getNome() + " - Email: " + getEmail() + " - Data de Aniversario: "
-                + getDataAniversario() + "]";
+        return "Id: " + getIdUsuario() + "\n" +
+                "Nome: " + getNome() + "\n" +
+                " - Email: " + getEmail() + "\n" +
+                " - Data de Aniversario: " + getDataAniversario() + "\n";
     }
 
 }

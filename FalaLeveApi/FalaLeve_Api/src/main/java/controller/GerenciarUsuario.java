@@ -12,7 +12,7 @@ public class GerenciarUsuario{
     GerarIdUsuario opGeraId = new GerarIdUsuario();
     GerarIdUsuario gerarIdUsuario = new GerarIdUsuario();
     Usuario usNaoVerbal = new UsuarioNaoVerbal();
-    Usuario Medico = new Medico();
+    Usuario medico = new Medico();
     Usuario usuario;
     Scanner input = new Scanner(System.in);
     public static String op;
@@ -25,7 +25,7 @@ public class GerenciarUsuario{
         usuario = new Usuario();
 
 
-        System.out.println("Informe qual o tipo de usuario que deseja adicionar(Medico,Parente Responsavel,Usuario Não Verbal):");
+        System.out.println("Informe qual o tipo de usuario que deseja adicionar(medico,Parente Responsavel,Usuario Não Verbal):");
         op = input.nextLine();
         opGeraId.op = op;
 
@@ -52,10 +52,10 @@ public class GerenciarUsuario{
         usuario.setDataAniversario(dataAnicersario);
 
 
-        if(op.equalsIgnoreCase("Medico")){
-            System.out.println("Informe o CRM do Medico: ");
+        if(op.equalsIgnoreCase("medico")){
+            System.out.println("Informe o CRM do medico: ");
             String crmU = input.next();
-            ((Medico)Medico).setCrm(crmU);
+            ((Medico) medico).setCrm(crmU);
 
         }else if(op.equalsIgnoreCase("Usuario Nao Verbal")
                 ||op.equalsIgnoreCase("Usuario Não Verbal")){
@@ -86,12 +86,15 @@ public class GerenciarUsuario{
 
     public void listarusuario(GerirUsuario lista) {
         System.out.println("Usuarios cadastrados: " + ((RepositorioUsuarioLista) lista).listarUsuarios());
-            if (op.equalsIgnoreCase("Medico")) {
-                System.out.println("CRM: " + ((Medico) Medico).getCrm());
+            if (op.equalsIgnoreCase("medico")) {
+                System.out.println("CRM: " + ((Medico) medico).getCrm());
             } else if (op.equalsIgnoreCase("Usuario Nao Verbal")
                     ||op.equalsIgnoreCase("Usuario Não Verbal")){
 
             }
     }
+
+
+
     }
 

@@ -22,7 +22,7 @@ public class GerarIdUsuario {
         String id,idN ;
         if (idFixo == null) {
             id = idAleatorio();
-            if(op.equalsIgnoreCase("Medico")){
+            if(op.equalsIgnoreCase("medico")){
                 idN = "MED";
                 idFixo = idN + "-" + id;
             } else if (op.equalsIgnoreCase("Parente Responsavel")){
