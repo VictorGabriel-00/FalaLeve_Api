@@ -2,11 +2,16 @@ package view;
 
 
 import controller.GerenciarUsuario;
+import interfaces.GerirUsuario;
+import model.Usuario;
+import repository.RepositorioUsuarioLista;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     GerenciarUsuario grUsuario = new GerenciarUsuario();
+    GerirUsuario lista = new RepositorioUsuarioLista();
     Scanner input = new Scanner(System.in);
     public int op;
     public int menu(){
@@ -21,12 +26,12 @@ public class Menu {
             op = input.nextInt();
             switch (op) {
                 case 1:
-                    grUsuario.escolha();
+                    grUsuario.criarUsuario(lista);
                     break;
                 case 2:
                     break;
                 case 3:
-                    grUsuario.listarusuario(null ,0);
+                    grUsuario.listarusuario(lista);
                     break;
                 case 4:
                     break;

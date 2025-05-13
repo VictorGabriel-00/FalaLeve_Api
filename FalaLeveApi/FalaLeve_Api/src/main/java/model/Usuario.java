@@ -1,15 +1,38 @@
 package model;
 
 public class Usuario {
-
-    public String nome;
+    private String idUsuario;
+    private String nome;
     private String email;
-    private int senha;
-    public int DataAniversario;
+    private String senha;
+    private int DataAniversario;
     public String op;
 
+    public String getIdUsuario() {
+        return idUsuario;
+    }
 
-    public Usuario(String nome, String email, int senha, int DataAniversario) {
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getDataAniversario() {
+        return DataAniversario;
+    }
+
+    public void setDataAniversario(int dataAniversario) {
+        DataAniversario = dataAniversario;
+    }
+
+    public Usuario(String nome, String email, String senha, int DataAniversario) {
         this.nome = nome;
         this.setEmail(email);
         this.setSenha(senha);
@@ -32,11 +55,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    public int verificarSenha(int op){
+    public String verificarSenha(String op){
         int senhaInt;
         senhaInt = String.valueOf(senha).length();
         if (senhaInt < 5){
@@ -50,6 +73,10 @@ public class Usuario {
         return senha;
     }
 
-
+    @Override
+    public String toString(){
+        return "[Nome: " + getNome() + " - Email: " + getEmail() + " - Data de Aniversario: "
+                + getDataAniversario() + "]";
+    }
 
 }

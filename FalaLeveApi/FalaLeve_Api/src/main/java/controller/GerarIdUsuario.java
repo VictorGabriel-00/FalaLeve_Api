@@ -5,8 +5,6 @@ import model.Usuario;
 
 public class GerarIdUsuario {
 
-
-    public static String nome;
     private static String idFixo;
 
     public static String op;
