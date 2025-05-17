@@ -21,7 +21,7 @@ public class UsuarioNaoVerbal extends Usuario {
     }
 
     public void setProntuario(String prontuario) {
-        this.prontuario = toString();
+        this.prontuario = prontuario;
     }
 
     public int getGrau() {
@@ -56,14 +56,14 @@ public class UsuarioNaoVerbal extends Usuario {
         this.animacao = animacao;
     }
 
-    public void FP(String prontuario, int grau, int fonteTamanho, String cor, String animacao, String son) {
-        prontuario = "Grau de Neurodivergencia: " + getGrau() + "\n" +
-                "Cor: " + getCor() + "\n" +
-                "Tamanho da fonte: " + getFonteTamanho() + "\n" +
-                "Animacao: " + getAnimacao() + "\n" +
-                "Sons: " + getSon();
-
-        setProntuario(prontuario);
+    @Override
+   public String toString() {
+        return "Grau:" + getGrau() + "\n" +
+                "Tamanho de Fonte: " + getFonteTamanho() + "\n" +
+                "Cor Agradavel: " + getCor() + "\n" +
+                "Preferencia de Animação: " + getAnimacao() + "\n" +
+                "Preferencia de Som: " + getSon() + "\n";
     }
+
 
 }

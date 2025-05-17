@@ -1,9 +1,5 @@
 package model;
 
-import controller.GerarIdUsuario;
-import controller.GerenciarUsuario;
-import interfaces.GerirUsuario;
-
 public class Usuario {
 
 
@@ -12,7 +8,9 @@ public class Usuario {
     private String email;
     private String senha;
     private String DataAniversario;
-    public String op;
+    public String opSenha;
+
+
 
     public String getIdUsuario() {
         return idUsuario;
@@ -38,19 +36,7 @@ public class Usuario {
         DataAniversario = dataAniversario;
     }
 
-    public Usuario(String nome, String email, String senha, String DataAniversario) {
-        this.nome = nome;
-        this.setEmail(email);
-        this.setSenha(senha);
-        this.DataAniversario = DataAniversario;
-    }
-
     public Usuario(){}
-
-    public Usuario(String email){
-        this.setEmail(email);
-    }
-
 
 
     public String getEmail() {
@@ -70,21 +56,30 @@ public class Usuario {
         senhaInt = String.valueOf(senha).length();
         if (senhaInt < 5){
             System.out.println("Senha Muito fraca,crie outra senha");
-            this.op = "Tente novamente";
+            this.opSenha = "Tente novamente";
         }else{
             System.out.println("Senha criada com sucesso");
-            this.op = "Senha criada com sucesso";
+            this.opSenha = "Senha criada com sucesso";
         }
 
         return senha;
     }
 
+    public void dataNascimento(int data){
+        String contagem = String.valueOf(data);
+        String primeiro = contagem.substring(0,2);
+        String segundo = contagem.substring(2,4);
+        String terceiro = contagem.substring(4, 8);
+        DataAniversario = primeiro + "/" + segundo  + "/" + terceiro;
+    }
+
+
     @Override
     public String toString(){
         return "Id: " + getIdUsuario() + "\n" +
                 "Nome: " + getNome() + "\n" +
-                " - Email: " + getEmail() + "\n" +
-                " - Data de Aniversario: " + getDataAniversario() + "\n";
+                "Email: " + getEmail() + "\n" +
+                "Data de Aniversario: " + getDataAniversario() + "\n";
     }
 
 }

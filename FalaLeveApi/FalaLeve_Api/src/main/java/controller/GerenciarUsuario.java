@@ -1,108 +1,59 @@
 package controller;
 
+import interfaces.GerirProntuario;
+import interfaces.GerirUsuario;
 import model.Medico;
 import model.Usuario;
-import model.UsuarioNaoVerbal;
-import interfaces.GerirUsuario;
 import repository.RepositorioUsuarioLista;
+import repository.RepositorioUsuarioProntuario;
 
 import java.util.Scanner;
 
+
 public class GerenciarUsuario{
-    GerarIdUsuario opGeraId = new GerarIdUsuario();
-    GerarIdUsuario gerarIdUsuario = new GerarIdUsuario();
-    Usuario usNaoVerbal;
     Usuario medico = new Medico();
-    Usuario usuario;
+    ColetarDados escolhaUsuario = new ColetarDados();
+    GerirUsuario lista = new RepositorioUsuarioLista();
+    GerirProntuario prontuario = new RepositorioUsuarioProntuario();
     Scanner input = new Scanner(System.in);
-    public static String op;
-    String dataAniversario,nome,email,senha,primeiro,segundo,terceiro,cor,sons,animacao;
-    int grau,tamanho;
+    public int escolhaTipo;
 
 
-    public void criarUsuario(GerirUsuario lista) {
-        usuario = new Usuario();
+    public void criarUsuario() {
 
+        System.out.println("Informe o Tipo de Usuario deseja Criar: ");
+        System.out.println("1 - Usuario Não Verbal");
+        System.out.println("2 - Parente Responsavel");
+        System.out.println("3 - Medico");
+        System.out.print("Escolha uma das opções: ");
+        escolhaTipo= input.nextInt();
 
-        System.out.println("Informe qual o tipo de usuario que deseja adicionar(medico,Parente Responsavel,Usuario Não Verbal):");
-        op = input.nextLine();
-        opGeraId.op = op;
-
-        System.out.println("Informe o nome do Usuario: ");
-        nome = input.nextLine();
-        usuario.setNome(nome);
-        System.out.println("Informe o email do Usuario: ");
-        email = input.nextLine();
-        usuario.setEmail(email);
-        System.out.println("Crie uma senha para o Usuario : ");
-        senha = input.next();
-        usuario.setSenha(senha);
-        usuario.verificarSenha(senha);
-
-        while(usuario.op == "Tente novamente"){
-            System.out.print("Crie uma senha com mais de 5 digitos: ");
-            senha = input.next();
-            usuario.setSenha(senha);
-            usuario.verificarSenha(senha);
+        switch (escolhaTipo){
+            case 1:
+                escolhaUsuario.criarUsuarioNaoVerbal(prontuario);
+                break;
+            case 2:
+                escolhaUsuario.criarUsuarioParenteResponsavel();
+                break;
+            case 3:
+                escolhaUsuario.criarUsuarioMedico();
+                break;
+            default:
+                System.out.println("Usuario não encontrado");
+                break;
         }
-
-        System.out.println("Informe a data de nascimento do Usuario(Apenas numeros): ");
-        dataAniversario = input.next();
-        String contagem = String.valueOf(dataAniversario);
-        primeiro = contagem.substring(0,2);
-        segundo = contagem.substring(2,4);
-        terceiro = contagem.substring(4, 8);
-        dataAniversario = primeiro + "/" + segundo  + "/" + terceiro;
-        usuario.setDataAniversario(dataAniversario);
-
-
-        if(op.equalsIgnoreCase("medico")){
-            System.out.println("Informe o CRM do medico: ");
-            String crmU = input.next();
-            ((Medico) medico).setCrm(crmU);
-
-        }else if(op.equalsIgnoreCase("Usuario Nao Verbal")
-                ||op.equalsIgnoreCase("Usuario Não Verbal")){
-            usNaoVerbal = new UsuarioNaoVerbal();
-            System.out.println("Monte seu Prontuario: ");
-            System.out.println("Informe qual o Grau da sua neurodivergencia: ");
-            grau = input.nextInt();
-            System.out.println("Informe cores que são agradaveis para voce: ");
-            cor = input.next();
-            cor = input.nextLine();
-            System.out.println("Informe os sons que voce gosta de ouvir: ");
-            sons = input.next();
-            System.out.println("Informe o Tamano de fonte que voce acha confortavel: ");
-            tamanho = input.nextInt();;
-            System.out.println("Informe se vc gosta dos movimentos com ou sem animalção: ");
-            String animacao = input.next();
-
-            ((UsuarioNaoVerbal) usNaoVerbal).setGrau(grau);
-            ((UsuarioNaoVerbal) usNaoVerbal).setCor(cor);
-            ((UsuarioNaoVerbal) usNaoVerbal).setSon(sons);
-            ((UsuarioNaoVerbal) usNaoVerbal).setFonteTamanho(tamanho);
-            ((UsuarioNaoVerbal) usNaoVerbal).setAnimacao(animacao);
-        }
-        String idPerma;
-        idPerma = gerarIdUsuario.GerenciarIdUsuario();
-        usuario.setIdUsuario(idPerma);
-        lista.addusuario(usuario);
-
     }
 
 
-    public void listarusuario(GerirUsuario lista) {
+    public void listarUsuario(GerirUsuario lista, GerirProntuario prontuario) {
         System.out.println("Usuarios cadastrados: \n " + ((RepositorioUsuarioLista) lista).listarUsuarios());
-            if (op.equalsIgnoreCase("medico")) {
-                System.out.println("CRM: " + ((Medico) medico).getCrm());
-            } else if (op.equalsIgnoreCase("Usuario Nao Verbal")
-                    ||op.equalsIgnoreCase("Usuario Não Verbal")){
-                System.out.println("Prontuario: \n" + ((UsuarioNaoVerbal) usNaoVerbal).getProntuario());
-
-            }
+        if (escolhaTipo == 3) {
+                System.out.println("CRM: " + ((Medico)medico).getCrm());
+            } else if (escolhaTipo == 1) {
+            System.out.println("Prontuario:\n " + ((RepositorioUsuarioProntuario) prontuario).prontuarioUsuario());
+        }
     }
 
 
 
     }
-

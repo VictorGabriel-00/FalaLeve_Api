@@ -1,6 +1,7 @@
 package interfaces;
 
 import model.Usuario;
+import model.UsuarioNaoVerbal;
 
 import java.util.List;
 

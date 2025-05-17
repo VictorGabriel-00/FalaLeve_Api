@@ -12,7 +12,7 @@ public class MenuPrincipal {
 
         do {
             menu.menu();
-        }while (menu.op != 4);
+        }while (menu.opMenu != 4);
 
         System.out.println("Menu encerrado com sucesso");
     }
