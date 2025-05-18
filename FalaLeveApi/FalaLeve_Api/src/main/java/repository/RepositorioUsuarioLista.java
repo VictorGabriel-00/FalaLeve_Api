@@ -22,7 +22,22 @@ public class RepositorioUsuarioLista implements GerirUsuario {
 
     @Override
     public void removerusuario(String email) {
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            if (listaUsuarios.get(i).getEmail().equals(email)) {
+                listaUsuarios.remove(i);
+                i--;
+            }
+        }
+    }
 
+    public boolean removerUsuarioPorEmail(String email) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getEmail().equals(email)) {
+                listaUsuarios.remove(usuario);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

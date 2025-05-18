@@ -55,5 +55,12 @@ public class GerenciarUsuario{
     }
 
 
+    public void removerUsuario(GerirUsuario lista) {
+        System.out.println("Digite o email do usuário que deseja remover:");
+        String email = input.next();
 
+        lista.removerusuario(email);
+        System.out.println("Operação concluída");
     }
+
+}

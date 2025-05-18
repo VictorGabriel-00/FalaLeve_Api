@@ -37,6 +37,7 @@ public class Menu {
                     coletarDados.DadosBasicos(lista);
                     break;
                 case 2:
+                    gerenciarUsuario.removerUsuario(lista2);
                     break;
                 case 3:
                     gerenciarUsuario.listarUsuario(lista, prontuario);
