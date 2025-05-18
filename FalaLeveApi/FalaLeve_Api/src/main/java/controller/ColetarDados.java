@@ -1,25 +1,27 @@
 package controller;
 
+import interfaces.GerirParenteResponsavel;
 import interfaces.GerirProntuario;
 import interfaces.GerirUsuario;
 import model.Medico;
+import model.ParenteResponsavel;
 import model.Usuario;
 import model.UsuarioNaoVerbal;
+import repository.RepositorioParenteResponsavel;
+import repository.RepositorioUsuarioLista;
+import repository.RepositorioUsuarioProntuario;
 
 import java.util.Scanner;
 
 public class ColetarDados {
     GerarIdUsuario gerarIdUsuario = new GerarIdUsuario();
     Scanner input = new Scanner(System.in);
-    Usuario usuario;
-    UsuarioNaoVerbal usuarioNaoVerbal;
 
-
-    public void DadosBasicos(GerirUsuario lista) {
-        usuario = new Usuario(); // inicie a variavel
+    public Usuario DadosBasicos(RepositorioUsuarioLista lista, Usuario usuario) {
+        usuario = new Usuario();
 
         String nome,email,senha; // os dados basicos da interface
-        int data; // escolha do tipo de usuario
+        int data;
 
         System.out.println("Informe o nome do Usuario: ");
         nome = input.nextLine();
@@ -38,6 +40,7 @@ public class ColetarDados {
         System.out.println("informe a data de nascimento do Usuario(Apenas numeros): ");
         data = input.nextInt();
         usuario.dataNascimento(data);
+        input.nextLine();
 
 
 
@@ -45,11 +48,11 @@ public class ColetarDados {
         usuario.setEmail(email);
         lista.addusuario(usuario);
 
+        return usuario;
 
     }
 
-    public void criarUsuarioNaoVerbal(GerirProntuario prontuario) {
-
+    public UsuarioNaoVerbal criarUsuarioNaoVerbal(RepositorioUsuarioProntuario prontuario, UsuarioNaoVerbal usuarioNaoVerbal) {
         usuarioNaoVerbal = new UsuarioNaoVerbal();
         String cor,son,animacao;
         int grau,tamanho;
@@ -74,29 +77,54 @@ public class ColetarDados {
         usuarioNaoVerbal.setFonteTamanho(tamanho);
         usuarioNaoVerbal.setAnimacao(animacao);
         prontuario.addProntuario(usuarioNaoVerbal);
+
+        return usuarioNaoVerbal;
     }
 
 
-    public void criarUsuarioParenteResponsavel(){
+    public ParenteResponsavel criarUsuarioParenteResponsavel(RepositorioParenteResponsavel listaParente) {
+        ParenteResponsavel usuarioParente = new ParenteResponsavel();
+        String nomeParente, emailParentesco,senhaParentesco;
+        int data;
 
+        System.out.println("Informe o nome do parente: ");
+        nomeParente = input.nextLine();
+        System.out.println("informe o email do parente: ");
+        emailParentesco = input.nextLine();
+        System.out.println("Crie uma senha para o parente: ");
+        senhaParentesco = input.nextLine();
+        usuarioParente.setSenhaParente(senhaParentesco);
+        usuarioParente.verificarSenha(senhaParentesco);
+        while(usuarioParente.opSenhaParente.equals("Tente novamente")){
+            System.out.println("Crie uma senha com mais de 5 caracter: ");
+            senhaParentesco = input.next();
+            usuarioParente.setSenhaParente(senhaParentesco);
+            usuarioParente.verificarSenha(senhaParentesco);
+        }
+        System.out.println("Informe a data de aniversario do parente: ");
+        data = input.nextInt();
+        usuarioParente.dataNascimento(data);
+
+       usuarioParente.setNomeParente(nomeParente);
+       usuarioParente.setEmailParente(emailParentesco);
+       usuarioParente.setSenhaParente(senhaParentesco);
+       usuarioParente.dataNascimento(data);
+       listaParente.addParenteResponsavel(usuarioParente);
+
+       return usuarioParente;
     }
 
 
-    public void criarUsuarioMedico(){
-        Medico medico = new Medico();
+    public Medico criarUsuarioMedico(Medico usuarioMedico){
+        usuarioMedico = new Medico();
         String crm;
 
         System.out.println("Informe o CRM do medico: ");
         crm = input.next();
-
-        medico.setCrm(crm);
+        usuarioMedico.setCrm(crm);
+        return usuarioMedico;
     }
 
-    public void id(){
-        String idPerma;
-        idPerma = gerarIdUsuario.GerenciarIdUsuario();
-        usuario.setIdUsuario(idPerma);
-    }
 
 
 

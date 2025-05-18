@@ -1,13 +1,11 @@
 package controller;
 
 
-import model.Usuario;
-
 public class GerarIdUsuario {
 
     private static String idFixo;
 
-    public static String op;
+    public static String opID;
 
 
 
@@ -18,14 +16,14 @@ public class GerarIdUsuario {
         return idAleatorio;
     }
 
-    public String GerenciarIdUsuario(){
+    public String GerenciarIdUsuario(String tipoId){
         String id,idN ;
         if (idFixo == null) {
             id = idAleatorio();
-            if(op.equalsIgnoreCase("medico")){
+            if(opID.equalsIgnoreCase("medico")){
                 idN = "MED";
                 idFixo = idN + "-" + id;
-            } else if (op.equalsIgnoreCase("Parente Responsavel")){
+            } else if (opID.equalsIgnoreCase("Parente Responsavel")){
                 idN = "RES";
                 idFixo = idN + "-" + id;
             }else{
