@@ -1,38 +1,39 @@
 package controller;
 
 
+import model.IdUsuario;
+import repository.RepositorioIdUsuario;
+
+
 public class GerarIdUsuario {
-
-    private static String idFixo;
-
-    public static String opID;
-
+    RepositorioIdUsuario repositorioIdUsuario = new RepositorioIdUsuario();
+    IdUsuario idUsuario = new IdUsuario();
 
 
     public static String idAleatorio(){
-
         String idAleatorio = String.valueOf(System.currentTimeMillis()).substring(6);
-
         return idAleatorio;
     }
 
     public String GerenciarIdUsuario(String tipoId){
         String id,idN ;
-        if (idFixo == null) {
+       idUsuario.setTipoId(tipoId);
+
             id = idAleatorio();
-            if(opID.equalsIgnoreCase("medico")){
+            if(idUsuario.getTipoId().equalsIgnoreCase("medico")){
                 idN = "MED";
-                idFixo = idN + "-" + id;
-            } else if (opID.equalsIgnoreCase("Parente Responsavel")){
+                idUsuario.setId(idN + "-" + id);
+                repositorioIdUsuario.AddIdUsuario(idUsuario);
+            } else if (idUsuario.getTipoId().equalsIgnoreCase("Parente Responsavel")){
                 idN = "RES";
-                idFixo = idN + "-" + id;
+                idUsuario.setId(idN + "-" + id);
+                repositorioIdUsuario.AddIdUsuario(idUsuario);
             }else{
                 idN = "PAC";
-                idFixo = idN + "-" + id;
+                idUsuario.setId(idN + "-" + id);
+                repositorioIdUsuario.AddIdUsuario(idUsuario);
             }
-
-        }
-        return idFixo;
+        return idUsuario.getId();
     }
 
 }

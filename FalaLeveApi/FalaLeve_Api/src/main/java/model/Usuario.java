@@ -2,23 +2,12 @@ package model;
 
 public class Usuario {
 
-
-    private String idUsuario;
     private String nome;
     private String email;
     private String senha;
     private String DataAniversario;
     public String opSenha;
 
-
-
-    public String getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 
     public String getNome() {
         return nome;
@@ -76,8 +65,7 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "Id: " + getIdUsuario() + "\n" +
-                "Nome: " + getNome() + "\n" +
+        return  "Nome: " + getNome() + "\n" +
                 "Email: " + getEmail() + "\n" +
                 "Data de Aniversario: " + getDataAniversario() + "\n";
     }

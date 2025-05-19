@@ -7,9 +7,7 @@ import model.Medico;
 import model.ParenteResponsavel;
 import model.Usuario;
 import model.UsuarioNaoVerbal;
-import repository.RepositorioParenteResponsavel;
-import repository.RepositorioUsuarioLista;
-import repository.RepositorioUsuarioProntuario;
+import repository.*;
 
 import java.util.Scanner;
 
@@ -20,7 +18,7 @@ public class ColetarDados {
     public Usuario DadosBasicos(RepositorioUsuarioLista lista, Usuario usuario) {
         usuario = new Usuario();
 
-        String nome,email,senha; // os dados basicos da interface
+        String nome,email,senha;
         int data;
 
         System.out.println("Informe o nome do Usuario: ");
@@ -52,8 +50,8 @@ public class ColetarDados {
 
     }
 
-    public UsuarioNaoVerbal criarUsuarioNaoVerbal(RepositorioUsuarioProntuario prontuario, UsuarioNaoVerbal usuarioNaoVerbal) {
-        usuarioNaoVerbal = new UsuarioNaoVerbal();
+    public UsuarioNaoVerbal criarUsuarioNaoVerbal(RepositorioUsuarioProntuario prontuario) {
+        UsuarioNaoVerbal usuarioNaoVerbal = new UsuarioNaoVerbal();
         String cor,son,animacao;
         int grau,tamanho;
 
@@ -77,7 +75,7 @@ public class ColetarDados {
         usuarioNaoVerbal.setFonteTamanho(tamanho);
         usuarioNaoVerbal.setAnimacao(animacao);
         prontuario.addProntuario(usuarioNaoVerbal);
-
+        gerarIdUsuario.GerenciarIdUsuario("Usuario Nao Verbal");
         return usuarioNaoVerbal;
     }
 
@@ -110,29 +108,24 @@ public class ColetarDados {
        usuarioParente.setSenhaParente(senhaParentesco);
        usuarioParente.dataNascimento(data);
        listaParente.addParenteResponsavel(usuarioParente);
+       gerarIdUsuario.GerenciarIdUsuario("Parente Responsavel");
+
 
        return usuarioParente;
     }
 
 
-    public Medico criarUsuarioMedico(Medico usuarioMedico){
-        usuarioMedico = new Medico();
+    public Medico criarUsuarioMedico(RepositorioMedico listaMedico) {
+        Medico usuarioMedico = new Medico();
         String crm;
 
         System.out.println("Informe o CRM do medico: ");
         crm = input.next();
+        gerarIdUsuario.GerenciarIdUsuario("Medico");
         usuarioMedico.setCrm(crm);
+        listaMedico.addMedico(usuarioMedico);
+
         return usuarioMedico;
     }
-
-
-
-
-
-
-
-
-
-
 
 }

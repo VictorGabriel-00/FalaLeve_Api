@@ -18,8 +18,6 @@ public class Menu {
     GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
     ColetarDados coletarDados = new ColetarDados();
     RepositorioUsuarioLista lista = new RepositorioUsuarioLista();
-    RepositorioUsuarioProntuario prontuario = new RepositorioUsuarioProntuario();
-    RepositorioParenteResponsavel listaParente = new RepositorioParenteResponsavel();
     Scanner input = new Scanner(System.in);
     public int opMenu;
 
@@ -42,7 +40,7 @@ public class Menu {
                     gerenciarUsuario.removerUsuario(lista);
                     break;
                 case 3:
-                    gerenciarUsuario.listarUsuario(lista,listaParente,prontuario);
+                    gerenciarUsuario.listarUsuario(lista);
                     break;
                 case 4:
                     break;

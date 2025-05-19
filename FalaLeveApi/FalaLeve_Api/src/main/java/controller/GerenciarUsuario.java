@@ -6,22 +6,18 @@ import interfaces.GerirUsuario;
 import model.Medico;
 import model.Usuario;
 import model.UsuarioNaoVerbal;
-import repository.RepositorioParenteResponsavel;
-import repository.RepositorioUsuarioLista;
-import repository.RepositorioUsuarioProntuario;
+import repository.*;
 import view.MenuPrincipal;
 
 import java.util.Scanner;
 
 
 public class GerenciarUsuario{
+    RepositorioMedico listaMedico = new RepositorioMedico();
     RepositorioParenteResponsavel listaParente = new RepositorioParenteResponsavel();
-    Medico usuarioMedico = new Medico();
-    UsuarioNaoVerbal usuarioNaoVerbal = new UsuarioNaoVerbal();
-    Usuario usuario = new Usuario();
     MenuPrincipal menuPrincipal = new MenuPrincipal();
     ColetarDados coletarDados = new ColetarDados();
-    GerirUsuario lista = new RepositorioUsuarioLista();
+    RepositorioIdUsuario repositorioIdUsuario = new RepositorioIdUsuario();
     RepositorioUsuarioProntuario prontuario = new RepositorioUsuarioProntuario();
     private Usuario usuarioAtual;
     private int escolhaTipo;
@@ -40,13 +36,13 @@ public class GerenciarUsuario{
 
         switch (escolhaTipo) {
             case 1:
-                coletarDados.criarUsuarioNaoVerbal(prontuario, usuarioNaoVerbal);
+                coletarDados.criarUsuarioNaoVerbal(prontuario);
                 break;
             case 2:
                 coletarDados.criarUsuarioParenteResponsavel(listaParente);
                 break;
             case 3:
-                coletarDados.criarUsuarioMedico(usuarioMedico);
+                coletarDados.criarUsuarioMedico(listaMedico);
                 break;
             default:
                 System.out.println("Opção inválida");
@@ -59,11 +55,12 @@ public class GerenciarUsuario{
     }
 
 
-    public void listarUsuario(RepositorioUsuarioLista lista, RepositorioParenteResponsavel listaParente, RepositorioUsuarioProntuario prontuario) {
+    public void listarUsuario(RepositorioUsuarioLista lista) {
+        System.out.println("Id do Usuario: " + ((RepositorioIdUsuario)repositorioIdUsuario).listaIdUsuario());
         System.out.println("Lista de Usuarios: \n" + ((RepositorioUsuarioLista)lista).listarUsuarios());
 
         if(escolhaTipo == 3){
-            System.out.println("CRM: " + usuarioMedico.getCrm());
+            System.out.println(((RepositorioMedico)listaMedico).listarMedicos());
         } else if (escolhaTipo == 2) {
             System.out.println("Parente Cadastrado: \n" + ((RepositorioParenteResponsavel)listaParente).listarParenteResponsavel());
         }else{
