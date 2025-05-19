@@ -69,7 +69,6 @@ public class ParenteResponsavel extends Usuario{
     public String toString(){
         return "Nome do Parente: " + getNomeParente() + "\n" +
                 "Email do Parente: " + getEmailParente() + "\n" +
-                "Senha do Parente: " + getSenhaParente() + "\n" +
                 "Data de Aniversario do Parente: " + getDataAniversarioParente() + "\n";
     }
 

@@ -71,6 +71,35 @@ public class GerenciarUsuario{
     }
 
 
+    public void editarUsuario(RepositorioIdUsuario listaIdUsuario) {
+        int editarTipoUsuario;
+        System.out.println("Informe o tipo do usuario que deseja editar: ");
+        System.out.println("1 - Usuario Não Verbal");
+        System.out.println("2 - Parente Responsavel");
+        System.out.println("3 - Medico");
+        editarTipoUsuario = input.nextInt();
+
+        switch (editarTipoUsuario){
+            case 1:
+                System.out.println("Criando um novo prontuario para o usuario não verbal");
+                coletarDados.criarUsuarioNaoVerbal(prontuario, listaIdUsuario);
+                break;
+            case 2:
+                System.out.println("Criando um novo prontuario para o parente responsavel");
+                coletarDados.criarUsuarioParenteResponsavel(listaParente, listaIdUsuario);
+                break;
+            case 3:
+                System.out.println("Criando um novo prontuario para o medico");
+                coletarDados.criarUsuarioMedico(listaMedico, listaIdUsuario);
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
+        }
+
+        menuPrincipal.main(null);
+    }
+
     public void removerUsuario(RepositorioUsuarioLista lista) {
         System.out.println("Digite o email do usuário que deseja remover:");
         String email = input.next();

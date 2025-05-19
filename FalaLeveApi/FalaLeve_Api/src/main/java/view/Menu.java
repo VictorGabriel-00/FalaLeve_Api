@@ -25,7 +25,8 @@ public class Menu {
             System.out.println("1 - Adicionar um usuario");
             System.out.println("2 - Remover um Usuario");
             System.out.println("3 - Listar um usuario");
-            System.out.println("4 - encerrar menu");
+            System.out.println("4 - Editar Usuario");
+            System.out.println("5 - encerrar menu");
             System.out.print("Escolha uma opção: ");
             opMenu = input.nextInt();
             input.nextLine();
@@ -41,6 +42,9 @@ public class Menu {
                     gerenciarUsuario.listarUsuario(lista, repositorioIdUsuario);
                     break;
                 case 4:
+                    gerenciarUsuario.editarUsuario(repositorioIdUsuario);
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Opção Invalida");
@@ -51,7 +55,7 @@ public class Menu {
             }
 
 
-        }while (opMenu != 4);
+        }while (opMenu != 5);
 
         return opMenu;
     }

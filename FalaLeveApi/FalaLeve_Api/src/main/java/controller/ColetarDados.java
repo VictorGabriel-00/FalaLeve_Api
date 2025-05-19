@@ -62,7 +62,8 @@ public class ColetarDados {
         System.out.println("Informe cores que são agradaveis para voce: ");
         cor = input.nextLine();
         System.out.println("Informe os sons que voce gosta de ouvir: ");
-        son = input.next();
+        son = input.nextLine();
+        input.nextLine();
         System.out.println("Informe o Tamano de fonte que voce acha confortavel: ");
         tamanho = input.nextInt();;
         input.nextLine();
