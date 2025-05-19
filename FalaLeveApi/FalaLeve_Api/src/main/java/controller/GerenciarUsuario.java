@@ -17,14 +17,13 @@ public class GerenciarUsuario{
     RepositorioParenteResponsavel listaParente = new RepositorioParenteResponsavel();
     MenuPrincipal menuPrincipal = new MenuPrincipal();
     ColetarDados coletarDados = new ColetarDados();
-    RepositorioIdUsuario repositorioIdUsuario = new RepositorioIdUsuario();
     RepositorioUsuarioProntuario prontuario = new RepositorioUsuarioProntuario();
     private Usuario usuarioAtual;
     private int escolhaTipo;
     Scanner input = new Scanner(System.in);
 
 
-    public void criarUsuario() {
+    public void criarUsuario(RepositorioIdUsuario listaIdUsuario) {
 
         System.out.println("Informe o Tipo de Usuario deseja Criar: ");
         System.out.println("1 - Usuario Não Verbal");
@@ -36,13 +35,13 @@ public class GerenciarUsuario{
 
         switch (escolhaTipo) {
             case 1:
-                coletarDados.criarUsuarioNaoVerbal(prontuario);
+                coletarDados.criarUsuarioNaoVerbal(prontuario,listaIdUsuario);
                 break;
             case 2:
-                coletarDados.criarUsuarioParenteResponsavel(listaParente);
+                coletarDados.criarUsuarioParenteResponsavel(listaParente,listaIdUsuario);
                 break;
             case 3:
-                coletarDados.criarUsuarioMedico(listaMedico);
+                coletarDados.criarUsuarioMedico(listaMedico,listaIdUsuario);
                 break;
             default:
                 System.out.println("Opção inválida");
@@ -55,8 +54,8 @@ public class GerenciarUsuario{
     }
 
 
-    public void listarUsuario(RepositorioUsuarioLista lista) {
-        System.out.println("Id do Usuario: " + ((RepositorioIdUsuario)repositorioIdUsuario).listaIdUsuario());
+    public void listarUsuario(RepositorioUsuarioLista lista, RepositorioIdUsuario repositorioIdUsuario) {
+        System.out.println("Id do Usuario:\n" + ((RepositorioIdUsuario)repositorioIdUsuario).listaIdUsuario());
         System.out.println("Lista de Usuarios: \n" + ((RepositorioUsuarioLista)lista).listarUsuarios());
 
         if(escolhaTipo == 3){

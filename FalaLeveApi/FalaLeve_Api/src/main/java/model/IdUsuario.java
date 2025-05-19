@@ -33,7 +33,7 @@ public class IdUsuario {
 
     @Override
     public String toString(){
-        return  "Id: " + idFixo;
+        return  "Id: " + getId();
     }
 
 

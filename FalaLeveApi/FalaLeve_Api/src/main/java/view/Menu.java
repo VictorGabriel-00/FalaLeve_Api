@@ -1,14 +1,11 @@
 package view;
 
-import interfaces.GerirParenteResponsavel;
 import model.Usuario;
 import controller.ColetarDados;
 import controller.GerenciarUsuario;
-import interfaces.GerirProntuario;
-import interfaces.GerirUsuario;
-import repository.RepositorioParenteResponsavel;
+import repository.RepositorioIdUsuario;
 import repository.RepositorioUsuarioLista;
-import repository.RepositorioUsuarioProntuario;
+
 
 
 import java.util.Scanner;
@@ -17,6 +14,7 @@ public class Menu {
     Usuario usuario;
     GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
     ColetarDados coletarDados = new ColetarDados();
+    RepositorioIdUsuario repositorioIdUsuario = new RepositorioIdUsuario();
     RepositorioUsuarioLista lista = new RepositorioUsuarioLista();
     Scanner input = new Scanner(System.in);
     public int opMenu;
@@ -40,7 +38,7 @@ public class Menu {
                     gerenciarUsuario.removerUsuario(lista);
                     break;
                 case 3:
-                    gerenciarUsuario.listarUsuario(lista);
+                    gerenciarUsuario.listarUsuario(lista, repositorioIdUsuario);
                     break;
                 case 4:
                     break;
@@ -49,7 +47,7 @@ public class Menu {
                     break;
             }
             if(opMenu != 0){
-                gerenciarUsuario.criarUsuario();
+                gerenciarUsuario.criarUsuario(repositorioIdUsuario);
             }
 
 

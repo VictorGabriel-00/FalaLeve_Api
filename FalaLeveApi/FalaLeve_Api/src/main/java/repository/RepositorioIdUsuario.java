@@ -1,9 +1,7 @@
 package repository;
 
-import controller.GerarIdUsuario;
 import interfaces.GeririIdUsuario;
 import model.IdUsuario;
-
 import java.util.List;
 
 public class RepositorioIdUsuario implements GeririIdUsuario {
@@ -20,7 +18,6 @@ public class RepositorioIdUsuario implements GeririIdUsuario {
 
     @Override
     public void RemoverIdUsuario(IdUsuario idUsuario) {
-
     }
     public List<IdUsuario> listaIdUsuario() {
         return this.listaIdUsuario;

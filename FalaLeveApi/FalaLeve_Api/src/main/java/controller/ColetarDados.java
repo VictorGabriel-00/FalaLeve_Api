@@ -50,7 +50,7 @@ public class ColetarDados {
 
     }
 
-    public UsuarioNaoVerbal criarUsuarioNaoVerbal(RepositorioUsuarioProntuario prontuario) {
+    public UsuarioNaoVerbal criarUsuarioNaoVerbal(RepositorioUsuarioProntuario prontuario,RepositorioIdUsuario listaIdUsuario) {
         UsuarioNaoVerbal usuarioNaoVerbal = new UsuarioNaoVerbal();
         String cor,son,animacao;
         int grau,tamanho;
@@ -75,12 +75,12 @@ public class ColetarDados {
         usuarioNaoVerbal.setFonteTamanho(tamanho);
         usuarioNaoVerbal.setAnimacao(animacao);
         prontuario.addProntuario(usuarioNaoVerbal);
-        gerarIdUsuario.GerenciarIdUsuario("Usuario Nao Verbal");
+        gerarIdUsuario.GerenciarIdUsuario("Usuario Nao Verbal",listaIdUsuario);
         return usuarioNaoVerbal;
     }
 
 
-    public ParenteResponsavel criarUsuarioParenteResponsavel(RepositorioParenteResponsavel listaParente) {
+    public ParenteResponsavel criarUsuarioParenteResponsavel(RepositorioParenteResponsavel listaParente,RepositorioIdUsuario listaIdUsuario) {
         ParenteResponsavel usuarioParente = new ParenteResponsavel();
         String nomeParente, emailParentesco,senhaParentesco;
         int data;
@@ -108,20 +108,20 @@ public class ColetarDados {
        usuarioParente.setSenhaParente(senhaParentesco);
        usuarioParente.dataNascimento(data);
        listaParente.addParenteResponsavel(usuarioParente);
-       gerarIdUsuario.GerenciarIdUsuario("Parente Responsavel");
+       gerarIdUsuario.GerenciarIdUsuario("Parente Responsavel",listaIdUsuario);
 
 
        return usuarioParente;
     }
 
 
-    public Medico criarUsuarioMedico(RepositorioMedico listaMedico) {
+    public Medico criarUsuarioMedico(RepositorioMedico listaMedico, RepositorioIdUsuario listaIdUsuario) {
         Medico usuarioMedico = new Medico();
         String crm;
 
         System.out.println("Informe o CRM do medico: ");
         crm = input.next();
-        gerarIdUsuario.GerenciarIdUsuario("Medico");
+        gerarIdUsuario.GerenciarIdUsuario("Medico",listaIdUsuario);
         usuarioMedico.setCrm(crm);
         listaMedico.addMedico(usuarioMedico);
 
