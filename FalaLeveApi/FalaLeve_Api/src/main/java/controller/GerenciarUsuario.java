@@ -5,6 +5,7 @@ import view.MenuPrincipal;
 import java.util.Scanner;
 
 public class GerenciarUsuario{
+    RepositorioIdUsuario repositorioIdUsuario = new RepositorioIdUsuario();
     static RepositorioMedico listaMedico = new RepositorioMedico();
     static RepositorioParenteResponsavel listaParente = new RepositorioParenteResponsavel();
     MenuPrincipal menuPrincipal = new MenuPrincipal();
@@ -61,23 +62,32 @@ public class GerenciarUsuario{
         System.out.println("1 - Usuario Não Verbal");
         System.out.println("2 - Parente Responsavel");
         System.out.println("3 - Medico");
+        System.out.print("Escolha uma das opções: ");
         editarTipoUsuario = input.nextInt();
         input.nextLine();
 
         if(editarTipoUsuario == 1){
             String idn;
-            System.out.println("Informe o id do usuario: ");
+            System.out.println("informe o id do usuario que deseja alterar: ");
+            String id = input.next();
+            System.out.println("Informe o id do Prontuario: ");
             idn = input.nextLine();
             prontuario.removerProntuario(idn);
+            listaIdUsuario.RemoverIdUsuario(id);
         }else if(editarTipoUsuario == 2){
-            System.out.println("Informe o email do parente cadastrado: ");
+            System.out.println("informe o id do usuario que deseja alterar: ");
+            String id = input.next();
+            System.out.println("Informe o email do parente cadastrado que deseja alterar: ");
             String emailParente = input.next();
-
             listaParente.removerParenteResponsavel(emailParente);
+            listaIdUsuario.RemoverIdUsuario(id);
         }else if(editarTipoUsuario == 3){
+            System.out.println("informe o id do usuario que deseja alterar: ");
+            String id = input.next();
             System.out.println("Informe o CRM do medico que deseja alterar: ");
             String crm = input.next();
             listaMedico.removerMedico(crm);
+            listaIdUsuario.RemoverIdUsuario(id);
         }
 
         switch (editarTipoUsuario){
