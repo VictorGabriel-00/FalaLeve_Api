@@ -50,7 +50,7 @@ public class Menu {
                     System.out.println("Opção Invalida");
                     break;
             }
-            if(opMenu != 0){
+            if(opMenu != 0 && opMenu != 5){
                 gerenciarUsuario.criarUsuario(repositorioIdUsuario);
             }
 
