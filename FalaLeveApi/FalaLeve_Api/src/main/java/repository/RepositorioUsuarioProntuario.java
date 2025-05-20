@@ -20,13 +20,19 @@ public class RepositorioUsuarioProntuario implements GerirProntuario {
     }
 
     @Override
-    public void removerProntuario(String email) {
+    public void removerProntuario(String idp) {
+        for (int i = 0; i < prontuarios.size(); i++) {
+            if (prontuarios.get(i).getIdProntuario().equals(idp)) {
+                prontuarios.remove(i);
+                i--;
+            }
+        }
 
     }
 
     @Override
-    public UsuarioNaoVerbal editProntuario(String email) {
-        return null;
+    public  UsuarioNaoVerbal editProntuario(UsuarioNaoVerbal prontuario) {
+       return null;
     }
 
     @Override

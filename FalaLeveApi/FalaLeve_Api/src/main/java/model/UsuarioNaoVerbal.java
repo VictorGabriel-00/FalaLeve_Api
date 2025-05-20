@@ -7,6 +7,15 @@ public class UsuarioNaoVerbal extends Usuario {
     private String cor;
     private String animacao;
     private String son;
+    private String idProntuario;
+
+    public String getIdProntuario() {
+        return idProntuario;
+    }
+
+    public void setIdProntuario(String idProntuario) {
+        this.idProntuario = idProntuario;
+    }
 
     public String getSon() {
         return son;
@@ -58,7 +67,8 @@ public class UsuarioNaoVerbal extends Usuario {
 
     @Override
    public String toString() {
-        return "Grau:" + getGrau() + "\n" +
+        return  "Id: " + getIdProntuario() + "\n" +
+                "Grau:" + getGrau() + "\n" +
                 "Tamanho de Fonte: " + getFonteTamanho() + "\n" +
                 "Cor Agradavel: " + getCor() + "\n" +
                 "Preferencia de Animação: " + getAnimacao() + "\n" +

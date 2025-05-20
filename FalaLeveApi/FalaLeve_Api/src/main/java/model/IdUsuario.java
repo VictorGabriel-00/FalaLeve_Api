@@ -4,6 +4,15 @@ public class IdUsuario {
     private String id;
     private String tipoId;
     private String idFixo;
+    private String IdProntuario;
+
+    public String getIdProntuario() {
+        return IdProntuario;
+    }
+
+    public void setIdProntuario(String idProntuario) {
+        IdProntuario = idProntuario;
+    }
 
     public String getId() {
         return id;
@@ -33,7 +42,7 @@ public class IdUsuario {
 
     @Override
     public String toString(){
-        return  "Id: " + getId();
+            return  "Id: " + getId();
     }
 
 

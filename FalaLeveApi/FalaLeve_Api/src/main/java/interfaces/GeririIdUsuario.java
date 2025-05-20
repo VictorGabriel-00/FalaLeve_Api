@@ -5,5 +5,5 @@ import model.IdUsuario;
 
 public interface GeririIdUsuario {
      void AddIdUsuario(IdUsuario idUsuario);
-     void RemoverIdUsuario(IdUsuario idUsuario);
+     void RemoverIdUsuario(String idUsuario);
 }

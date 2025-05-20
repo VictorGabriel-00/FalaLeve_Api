@@ -2,8 +2,6 @@ package repository;
 
 import interfaces.GerirUsuario;
 import model.Usuario;
-import model.UsuarioNaoVerbal;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +9,12 @@ public class RepositorioUsuarioLista implements GerirUsuario {
 
     private List<Usuario> listaUsuarios;
 
-
     public RepositorioUsuarioLista() {listaUsuarios = new ArrayList<Usuario>();}
 
     @Override
     public void addusuario(Usuario usuario) {
         listaUsuarios.add(usuario);
     }
-
 
     @Override
     public void removerusuario(String email) {
@@ -28,16 +24,6 @@ public class RepositorioUsuarioLista implements GerirUsuario {
                 i--;
             }
         }
-    }
-
-    public boolean removerUsuarioPorEmail(String email) {
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getEmail().equals(email)) {
-                listaUsuarios.remove(usuario);
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override

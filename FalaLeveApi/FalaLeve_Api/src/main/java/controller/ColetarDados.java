@@ -17,7 +17,6 @@ public class ColetarDados {
 
     public Usuario DadosBasicos(RepositorioUsuarioLista lista, Usuario usuario) {
         usuario = new Usuario();
-
         String nome,email,senha;
         int data;
 
@@ -40,8 +39,6 @@ public class ColetarDados {
         usuario.dataNascimento(data);
         input.nextLine();
 
-
-
         usuario.setNome(nome);
         usuario.setEmail(email);
         lista.addusuario(usuario);
@@ -56,18 +53,17 @@ public class ColetarDados {
         int grau,tamanho;
 
         System.out.println("Monte seu Prontuario: ");
-        System.out.println("Informe qual o Grau da sua neurodivergencia: ");
+        System.out.println("Informe qual o Grau da sua neurodivergencia (1 a 5): ");
         grau = input.nextInt();
         input.nextLine();
         System.out.println("Informe cores que são agradaveis para voce: ");
         cor = input.nextLine();
         System.out.println("Informe os sons que voce gosta de ouvir: ");
         son = input.nextLine();
-        input.nextLine();
-        System.out.println("Informe o Tamano de fonte que voce acha confortavel: ");
+        System.out.println("Informe o Tamano de fonte que voce acha confortavel de 10 a 20: ");
         tamanho = input.nextInt();;
         input.nextLine();
-        System.out.println("Informe se vc gosta dos movimentos com ou sem animalção: ");
+        System.out.println("Informe se vc gosta dos movimentos com ou sem animação: ");
         animacao = input.nextLine();
 
         usuarioNaoVerbal.setGrau(grau);
@@ -77,6 +73,8 @@ public class ColetarDados {
         usuarioNaoVerbal.setAnimacao(animacao);
         prontuario.addProntuario(usuarioNaoVerbal);
         gerarIdUsuario.GerenciarIdUsuario("Usuario Nao Verbal",listaIdUsuario);
+        String id = gerarIdUsuario.idFixo;
+        usuarioNaoVerbal.setIdProntuario(id);
         return usuarioNaoVerbal;
     }
 

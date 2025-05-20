@@ -2,7 +2,6 @@ package repository;
 
 import interfaces.GerirMedico;
 import model.Medico;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +17,13 @@ public class RepositorioMedico implements GerirMedico {
     }
 
     @Override
-    public void removerMedico(String email) {
-
+    public void removerMedico(String crm) {
+        for (int i = 0; i < listaMedico.size(); i++) {
+            if (listaMedico.get(i).getCrm().equals(crm)) {
+                listaMedico.remove(i);
+                i--;
+            }
+        }
     }
 
     @Override

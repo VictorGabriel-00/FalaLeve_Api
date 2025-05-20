@@ -17,7 +17,13 @@ public class RepositorioIdUsuario implements GeririIdUsuario {
     }
 
     @Override
-    public void RemoverIdUsuario(IdUsuario idUsuario) {
+    public void RemoverIdUsuario(String idUsuario) {
+        for (int i = 0; i < listaIdUsuario.size(); i++) {
+            if (listaIdUsuario.get(i).getId().equals(idUsuario)) {
+                listaIdUsuario.remove(i);
+                i--;
+            }
+        }
     }
     public List<IdUsuario> listaIdUsuario() {
         return this.listaIdUsuario;

@@ -1,6 +1,5 @@
 package model;
 
-import view.MenuPrincipal;
 
 public class ParenteResponsavel extends Usuario{
 

@@ -1,9 +1,7 @@
 package controller;
 
-
 import model.IdUsuario;
 import repository.RepositorioIdUsuario;
-
 
 public class GerarIdUsuario {
     IdUsuario idUsuario = new IdUsuario();
@@ -15,11 +13,17 @@ public class GerarIdUsuario {
         return idAleatorio;
     }
 
+    public static String idProntuario(){
+        String idProntuario = String.valueOf(System.currentTimeMillis()).substring(8);
+        return idProntuario;
+    }
+
     public String GerenciarIdUsuario(String tipoId, RepositorioIdUsuario listaIdUsuario){
-        String id,idN;
+        String id,idp,idN,idc;
        idUsuario.setTipoId(tipoId);
 
             id = idAleatorio();
+            idp= idProntuario();
             if(idUsuario.getTipoId().equalsIgnoreCase("medico")){
                 idN = "MED";
                 idUsuario.setId(idN + "-" + id);
@@ -32,8 +36,10 @@ public class GerarIdUsuario {
                 listaIdUsuario.AddIdUsuario(idUsuario);
             }else{
                 idN = "PAC";
+                idc = "PRON";
                 idUsuario.setId(idN + "-" + id);
-                idFixo = idUsuario.getId();
+                idUsuario.setIdProntuario(idc + "-" + idp);
+                idFixo = idUsuario.getIdProntuario();
                 listaIdUsuario.AddIdUsuario(idUsuario);
             }
         return idFixo;

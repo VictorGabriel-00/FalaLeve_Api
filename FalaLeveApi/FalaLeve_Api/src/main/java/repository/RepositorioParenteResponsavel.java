@@ -12,6 +12,7 @@ public class RepositorioParenteResponsavel implements GerirParenteResponsavel {
     public RepositorioParenteResponsavel() {
         this.listaParenteResponsavel = new ArrayList<ParenteResponsavel>();
     }
+
     @Override
     public void addParenteResponsavel(ParenteResponsavel parenteResponsavel) {
         listaParenteResponsavel.add(parenteResponsavel);
@@ -20,7 +21,12 @@ public class RepositorioParenteResponsavel implements GerirParenteResponsavel {
 
     @Override
     public void removerParenteResponsavel(String email) {
-
+        for (int i = 0; i < listaParenteResponsavel.size(); i++) {
+            if (listaParenteResponsavel.get(i).getEmailParente().equals(email)) {
+                listaParenteResponsavel.remove(i);
+                i--;
+            }
+        }
     }
 
     @Override

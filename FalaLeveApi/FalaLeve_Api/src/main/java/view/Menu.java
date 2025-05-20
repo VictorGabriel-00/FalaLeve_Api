@@ -14,12 +14,12 @@ public class Menu {
     Usuario usuario;
     GerenciarUsuario gerenciarUsuario = new GerenciarUsuario();
     ColetarDados coletarDados = new ColetarDados();
-    RepositorioIdUsuario repositorioIdUsuario = new RepositorioIdUsuario();
-    RepositorioUsuarioLista lista = new RepositorioUsuarioLista();
+
     Scanner input = new Scanner(System.in);
     public int opMenu;
 
-    public int menu(){
+    public int menu(RepositorioIdUsuario repositorioIdUsuario, RepositorioUsuarioLista lista) {
+
         do {
             System.out.println("Menu de Usuario");
             System.out.println("1 - Adicionar um usuario");
@@ -33,10 +33,10 @@ public class Menu {
             switch (opMenu) {
                 case 1:
                     coletarDados.DadosBasicos(lista, usuario);
-
+                    System.out.println("Usuario Criado com sucesso");
                     break;
                 case 2:
-                    gerenciarUsuario.removerUsuario(lista);
+                    gerenciarUsuario.removerUsuario(lista, repositorioIdUsuario);
                     break;
                 case 3:
                     gerenciarUsuario.listarUsuario(lista, repositorioIdUsuario);

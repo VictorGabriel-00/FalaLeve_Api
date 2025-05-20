@@ -1,27 +1,17 @@
 package controller;
 
-import interfaces.GerirParenteResponsavel;
-import interfaces.GerirProntuario;
-import interfaces.GerirUsuario;
-import model.Medico;
-import model.Usuario;
-import model.UsuarioNaoVerbal;
 import repository.*;
 import view.MenuPrincipal;
-
 import java.util.Scanner;
 
-
 public class GerenciarUsuario{
-    RepositorioMedico listaMedico = new RepositorioMedico();
-    RepositorioParenteResponsavel listaParente = new RepositorioParenteResponsavel();
+    static RepositorioMedico listaMedico = new RepositorioMedico();
+    static RepositorioParenteResponsavel listaParente = new RepositorioParenteResponsavel();
     MenuPrincipal menuPrincipal = new MenuPrincipal();
     ColetarDados coletarDados = new ColetarDados();
-    RepositorioUsuarioProntuario prontuario = new RepositorioUsuarioProntuario();
-    private Usuario usuarioAtual;
-    private int escolhaTipo;
-    Scanner input = new Scanner(System.in);
+    static RepositorioUsuarioProntuario prontuario = new RepositorioUsuarioProntuario();
 
+    Scanner input = new Scanner(System.in);
 
     public void criarUsuario(RepositorioIdUsuario listaIdUsuario) {
 
@@ -30,10 +20,10 @@ public class GerenciarUsuario{
         System.out.println("2 - Parente Responsavel");
         System.out.println("3 - Medico");
         System.out.print("Escolha uma das opções: ");
-        escolhaTipo = input.nextInt();
+        menuPrincipal.escolhaTipo = input.nextInt();
         input.nextLine();
 
-        switch (escolhaTipo) {
+        switch (menuPrincipal.escolhaTipo) {
             case 1:
                 coletarDados.criarUsuarioNaoVerbal(prontuario,listaIdUsuario);
                 break;
@@ -47,20 +37,15 @@ public class GerenciarUsuario{
                 System.out.println("Opção inválida");
         }
 
-       if(usuarioAtual != null) {
-           System.out.println("Usuario criado com sucesso");
-       }
-
     }
-
 
     public void listarUsuario(RepositorioUsuarioLista lista, RepositorioIdUsuario repositorioIdUsuario) {
         System.out.println("Id do Usuario:\n" + ((RepositorioIdUsuario)repositorioIdUsuario).listaIdUsuario());
         System.out.println("Lista de Usuarios: \n" + ((RepositorioUsuarioLista)lista).listarUsuarios());
 
-        if(escolhaTipo == 3){
-            System.out.println(((RepositorioMedico)listaMedico).listarMedicos());
-        } else if (escolhaTipo == 2) {
+        if(menuPrincipal.escolhaTipo == 3){
+            System.out.println("CRM do Medico \n" + ((RepositorioMedico)listaMedico).listarMedicos());
+        } else if (menuPrincipal.escolhaTipo == 2) {
             System.out.println("Parente Cadastrado: \n" + ((RepositorioParenteResponsavel)listaParente).listarParenteResponsavel());
         }else{
             System.out.println("Prontuario: \n" + ((RepositorioUsuarioProntuario)prontuario).prontuarioUsuario());
@@ -70,7 +55,6 @@ public class GerenciarUsuario{
 
     }
 
-
     public void editarUsuario(RepositorioIdUsuario listaIdUsuario) {
         int editarTipoUsuario;
         System.out.println("Informe o tipo do usuario que deseja editar: ");
@@ -78,31 +62,69 @@ public class GerenciarUsuario{
         System.out.println("2 - Parente Responsavel");
         System.out.println("3 - Medico");
         editarTipoUsuario = input.nextInt();
+        input.nextLine();
+
+        if(editarTipoUsuario == 1){
+            String idn;
+            System.out.println("Informe o id do usuario: ");
+            idn = input.nextLine();
+            prontuario.removerProntuario(idn);
+        }else if(editarTipoUsuario == 2){
+            System.out.println("Informe o email do parente cadastrado: ");
+            String emailParente = input.next();
+
+            listaParente.removerParenteResponsavel(emailParente);
+        }else if(editarTipoUsuario == 3){
+            System.out.println("Informe o CRM do medico que deseja alterar: ");
+            String crm = input.next();
+            listaMedico.removerMedico(crm);
+        }
 
         switch (editarTipoUsuario){
             case 1:
-                System.out.println("Criando um novo prontuario para o usuario não verbal");
-                coletarDados.criarUsuarioNaoVerbal(prontuario, listaIdUsuario);
+                coletarDados.criarUsuarioNaoVerbal(prontuario,listaIdUsuario);
                 break;
             case 2:
-                System.out.println("Criando um novo prontuario para o parente responsavel");
-                coletarDados.criarUsuarioParenteResponsavel(listaParente, listaIdUsuario);
+                coletarDados.criarUsuarioParenteResponsavel(listaParente,listaIdUsuario);
                 break;
             case 3:
-                System.out.println("Criando um novo prontuario para o medico");
-                coletarDados.criarUsuarioMedico(listaMedico, listaIdUsuario);
+                coletarDados.criarUsuarioMedico(listaMedico,listaIdUsuario);
                 break;
             default:
                 System.out.println("Opção inválida");
                 break;
         }
-
         menuPrincipal.main(null);
     }
 
-    public void removerUsuario(RepositorioUsuarioLista lista) {
+    public void removerUsuario(RepositorioUsuarioLista lista, RepositorioIdUsuario repositorioIdUsuario) {
         System.out.println("Digite o email do usuário que deseja remover:");
         String email = input.next();
+
+        if(menuPrincipal.escolhaTipo == 3){
+            System.out.println("informe o id do usuario: ");
+            String id = input.next();
+            System.out.println("Informe o CRM do medico que deseja remover: ");
+            String crm = input.next();
+            listaMedico.removerMedico(crm);
+            repositorioIdUsuario.RemoverIdUsuario(id);
+        } else if (menuPrincipal.escolhaTipo == 2) {
+            System.out.println("informe o id do usuario: ");
+            String id = input.next();
+            System.out.println("Informe o email do parente cadastrado: ");
+            String emailParente = input.next();
+
+            listaParente.removerParenteResponsavel(emailParente);
+            repositorioIdUsuario.RemoverIdUsuario(id);
+        } else if (menuPrincipal.escolhaTipo == 1) {
+            System.out.println("informe o id do usuario: ");
+            String id = input.next();
+            System.out.println("informe o id do prontuario: ");
+            String idP = input.next();
+
+            prontuario.removerProntuario(idP);
+            repositorioIdUsuario.RemoverIdUsuario(id);
+        }
 
         lista.removerusuario(email);
         System.out.println("Operação concluída");
