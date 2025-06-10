@@ -23,10 +23,6 @@ public class Usuario {
     @Column(length = 50)
     private String dataCriacaoConta;
 
-    public String getStatusAtivo() {
-        return statusAtivo;
-    }
-
     public void setStatusAtivo(String statusAtivo) {
         this.statusAtivo = statusAtivo;
     }
@@ -38,9 +34,6 @@ public class Usuario {
     public void setId(UUID id) {
         this.id = id;
     }
-
-    public String opSenha;
-
 
     public String getNome() {
         return nome;
@@ -58,8 +51,6 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public Usuario(){}
-
 
     public String getEmail() {
         return email;
@@ -73,34 +64,5 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String verificarSenha(String op){
-        int senhaInt;
-        senhaInt = String.valueOf(senha).length();
-        if (senhaInt < 5){
-            System.out.println("Senha Muito fraca,crie outra senha");
-            this.opSenha = "Tente novamente";
-        }else{
-            System.out.println("Senha criada com sucesso");
-            this.opSenha = "Senha criada com sucesso";
-        }
-
-        return senha;
-    }
-
-    public void dataNascimento(int data){
-        String contagem = String.valueOf(data);
-        String primeiro = contagem.substring(0,2);
-        String segundo = contagem.substring(2,4);
-        String terceiro = contagem.substring(4, 8);
-        dataNascimento = primeiro + "/" + segundo  + "/" + terceiro;
-    }
-
-
-    @Override
-    public String toString(){
-        return  "Nome: " + getNome() + "\n" +
-                "Email: " + getEmail() + "\n" +
-                "Data de Aniversario: " + getDataNascimento() + "\n";
-    }
 
 }

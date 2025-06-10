@@ -17,9 +17,4 @@ public class Medico extends Usuario {
         this.Crm = crm;
     }
 
-    @Override
-    public String toString(){
-        return "CRM: " + getCrm();
-    }
-
 }
