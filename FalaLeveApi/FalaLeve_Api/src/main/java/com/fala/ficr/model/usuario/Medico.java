@@ -1,11 +1,13 @@
 package com.fala.ficr.model.usuario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "TB_MEDICO")
 public class Medico extends Usuario {
+
     private String Crm;
 
     public String getCrm() {

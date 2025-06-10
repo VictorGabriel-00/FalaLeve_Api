@@ -17,7 +17,7 @@ public class Usuario {
     @Column(nullable = false, length = 100)
     private String senha;
     @Column(nullable = false, length = 50)
-    private String dataAniversario;
+    private String dataNascimento;
     @Column(length = 50)
     private String statusAtivo;
     @Column(length = 50)
@@ -50,12 +50,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getDataAniversario() {
-        return dataAniversario;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDataAniversario(String dataAniversario) {
-        this.dataAniversario = dataAniversario;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public Usuario(){}
@@ -92,7 +92,7 @@ public class Usuario {
         String primeiro = contagem.substring(0,2);
         String segundo = contagem.substring(2,4);
         String terceiro = contagem.substring(4, 8);
-        dataAniversario = primeiro + "/" + segundo  + "/" + terceiro;
+        dataNascimento = primeiro + "/" + segundo  + "/" + terceiro;
     }
 
 
@@ -100,7 +100,7 @@ public class Usuario {
     public String toString(){
         return  "Nome: " + getNome() + "\n" +
                 "Email: " + getEmail() + "\n" +
-                "Data de Aniversario: " + getDataAniversario() + "\n";
+                "Data de Aniversario: " + getDataNascimento() + "\n";
     }
 
 }
