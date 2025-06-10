@@ -1,8 +1,8 @@
 package com.fala.ficr.view;
 
 import com.fala.ficr.model.Usuario;
-import com.fala.ficr.controller.ColetarDados;
-import com.fala.ficr.controller.GerenciarUsuario;
+import com.fala.ficr.cont.ColetarDados;
+import com.fala.ficr.cont.GerenciarUsuario;
 import com.fala.ficr.repository.RepositorioIdUsuario;
 import com.fala.ficr.repository.RepositorioUsuarioLista;
 

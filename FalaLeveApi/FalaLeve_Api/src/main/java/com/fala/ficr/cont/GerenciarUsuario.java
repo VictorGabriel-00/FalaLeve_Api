@@ -1,4 +1,4 @@
-package com.fala.ficr.controller;
+package com.fala.ficr.cont;
 
 import com.fala.ficr.repository.*;
 import com.fala.ficr.view.MenuPrincipal;
