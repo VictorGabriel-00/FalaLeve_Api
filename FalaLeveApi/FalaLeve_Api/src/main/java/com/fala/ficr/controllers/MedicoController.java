@@ -1,6 +1,6 @@
 package com.fala.ficr.controllers;
 
-import com.fala.ficr.model.Medico;
+import com.fala.ficr.model.usuario.Medico;
 import com.fala.ficr.recordDto.MedicoRecordDto;
 import com.fala.ficr.repositories.MedicoRepository;
 import jakarta.validation.Valid;
