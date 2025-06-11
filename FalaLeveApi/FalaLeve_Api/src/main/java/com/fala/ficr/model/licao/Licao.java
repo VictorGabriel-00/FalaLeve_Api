@@ -19,8 +19,8 @@ public class Licao {
     private int xpGanho;
     @Column(length = 50, nullable = false)
     private String categoria;
-    @Column(length = 50, nullable = false)
-    private int tempoEstimado;
+   /* @Column(length = 50, nullable = false)
+    private int tempoEstimado;*/
     @Column(length = 50, nullable = false)
     private String disponibilidade;
 
@@ -72,13 +72,13 @@ public class Licao {
         this.categoria = categoria;
     }
 
-    public int getTempoEstimado() {
+  /*  public int getTempoEstimado() {
         return tempoEstimado;
     }
 
     public void setTempoEstimado(int tempoEstimado) {
         this.tempoEstimado = tempoEstimado;
-    }
+    }*/
 
     public String getDisponibilidade() {
         return disponibilidade;

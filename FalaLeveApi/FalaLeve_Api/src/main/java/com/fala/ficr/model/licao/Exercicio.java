@@ -6,20 +6,21 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TB_EXERCICIO")
 public class Exercicio extends Licao{
-    private int idExercicio;
+    //private int idExercicio;
     private String nomeExercicio;
     private String descricaoExercicio;
     private String tipoExercicio;
     private String instrucaoExercicio;
     private int tempoExercicio;
 
-    public int getIdExercicio() {
+
+    /*public int getIdExercicio() {
         return idExercicio;
     }
 
     public void setIdExercicio(int idExercicio) {
         this.idExercicio = idExercicio;
-    }
+    }*/
 
     public String getNomeExercicio() {
         return nomeExercicio;

@@ -5,9 +5,27 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "TB_PROGRESSO")
 public class Progesso extends Licao {
+    private double idProgresso;
     private int dataInicio;
     private int dataFim;
     private int xpGanho;
+    private int percente;
+
+    public double getIdProgresso() {
+        return idProgresso;
+    }
+
+    public void setIdProgresso(double idProgresso) {
+        this.idProgresso = idProgresso;
+    }
+
+    public int getPercente() {
+        return percente;
+    }
+
+    public void setPercente(int percente) {
+        this.percente = percente;
+    }
 
     public int getDataInicio() {
         return dataInicio;
