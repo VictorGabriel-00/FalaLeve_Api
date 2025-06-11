@@ -1,6 +1,7 @@
 package com.fala.ficr.model.usuario;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -9,6 +10,7 @@ import java.util.UUID;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonIgnore
     private UUID id;
     @Column(nullable = false, length = 200)
     private String nome;

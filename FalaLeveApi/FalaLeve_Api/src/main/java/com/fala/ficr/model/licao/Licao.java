@@ -1,5 +1,6 @@
 package com.fala.ficr.model.licao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -24,13 +25,9 @@ public class Licao {
     @Column(length = 50, nullable = false)
     private String disponibilidade;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
+/* public void setId(UUID id) {
         this.id = id;
-    }
+    }*/
 
     public String getTitulo() {
         return titulo;
