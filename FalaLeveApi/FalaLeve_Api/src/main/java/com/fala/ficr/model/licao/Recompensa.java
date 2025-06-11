@@ -9,7 +9,7 @@ public class Recompensa extends Licao{
     private int idRecompensa;
     private int dataConcessao;
     private int dataResgate;
-    private String statusRecompensa;
+    private boolean statusRecompensa;
     private String descricaoRecompensa;
     private String tipoRecompensa;
     private int valorRecompensa;
@@ -38,11 +38,11 @@ public class Recompensa extends Licao{
         this.dataResgate = dataResgate;
     }
 
-    public String getStatusRecompensa() {
+    public boolean getStatusRecompensa() {
         return statusRecompensa;
     }
 
-    public void setStatusRecompensa(String statusRecompensa) {
+    public void setStatusRecompensa(boolean statusRecompensa) {
         this.statusRecompensa = statusRecompensa;
     }
 
