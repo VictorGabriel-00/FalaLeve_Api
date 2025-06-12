@@ -17,65 +17,34 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
+@RequestMapping("/medico")
 public class MedicoController {
     @Autowired
     MedicoRepository medicoRepository;
 
-    private String gerarIdPersonalizadoUnico() {
-        String idPersonalizado;
-        Optional<Medico> medicoExistente;
-
-        do {
-            // Gera 5 números aleatórios (de 0 a 99999)
-            int numerosAleatorios = ThreadLocalRandom.current().nextInt(0, 100000);
-            // Formata com o prefixo e o preenchimento de zeros
-            idPersonalizado = "MED-" + String.format("%05d", numerosAleatorios);
-
-            // Verifica se este ID já existe no banco de dados
-            medicoExistente = medicoRepository.findByIdPersonalizado(idPersonalizado);
-
-        } while (medicoExistente.isPresent()); // Repete se o ID já foi usado
-
-        return idPersonalizado;
-    }
-
-
-    @PostMapping("/medico")
+    @PostMapping
     public ResponseEntity<Medico> saveMedico(@RequestBody @Valid MedicoRecordDto medicoRecordDto){
         var medicoAdm = new Medico();
         BeanUtils.copyProperties(medicoRecordDto, medicoAdm);
-        medicoAdm.setIdPersonalizado(gerarIdPersonalizadoUnico());
         return ResponseEntity.status(HttpStatus.CREATED).body(medicoRepository.save(medicoAdm));
     }
 
 
-    @GetMapping("/medico")
+    @GetMapping
     public ResponseEntity<List<Medico>> getMedicos(){
         return ResponseEntity.status(HttpStatus.OK).body(medicoRepository.findAll());
     }
 
-    /*@GetMapping ("/medico/{id}")
+    @GetMapping ("/{id}")
     public ResponseEntity<Object> getOneMedico(@PathVariable(value = "id") UUID id){
         Optional<Medico> medicoOp = medicoRepository.findById(id);
         if(medicoOp.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Medico não encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(medicoOp.get());
-    }*/
-
-    @GetMapping("/medico/pid/{idPersonalizado}") // 'pid' para "ID Personalizado" para diferenciar do endpoint de UUID
-    public ResponseEntity<Object> getOneMedicoByIdPersonalizado(@PathVariable(value = "idPersonalizado") String idPersonalizado){
-        Optional<Medico> medicoOptional = medicoRepository.findByIdPersonalizado(idPersonalizado);
-
-        if (medicoOptional.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico não encontrado.");
-        }
-
-        return ResponseEntity.status(HttpStatus.OK).body(medicoOptional.get());
     }
 
-
-    @PutMapping("/medico/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object>upMedico(@PathVariable(value = "id") UUID id,
                                @RequestBody @Valid MedicoRecordDto medicoRecordDto){
 
@@ -89,7 +58,7 @@ public class MedicoController {
         return ResponseEntity.status(HttpStatus.OK).body(medicoRepository.save(medicoAdm));
     }
 
-    @DeleteMapping("/medico/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteMedico(@PathVariable(value = "id") UUID id){
         Optional<Medico> medicoOp = medicoRepository.findById(id);
         if(medicoOp.isEmpty()){
