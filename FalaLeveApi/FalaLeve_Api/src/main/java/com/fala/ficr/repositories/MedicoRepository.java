@@ -9,5 +9,4 @@ import java.util.UUID;
 
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, UUID> {
-    Optional<Medico> findByIdPersonalizado(String idPersonalizado);
 }

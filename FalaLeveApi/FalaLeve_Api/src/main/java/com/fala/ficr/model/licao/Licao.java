@@ -3,9 +3,11 @@ package com.fala.ficr.model.licao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
-@MappedSuperclass
+@Entity
+@Table(name = "TB_LICAO")
 public class Licao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,14 +22,35 @@ public class Licao {
     private int xpGanho;
     @Column(length = 50, nullable = false)
     private String categoria;
-   /* @Column(length = 50, nullable = false)
-    private int tempoEstimado;*/
     @Column(length = 50, nullable = false)
-    private String disponibilidade;
+    private int tempoEstimado;
+    @Column(length = 50, nullable = false)
+    private boolean disponibilidade;
 
-/* public void setId(UUID id) {
+    @OneToMany(mappedBy = "licao", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Exercicio> exercicios;
+
+    public List<Exercicio> getExercicios() {
+        return exercicios;
+    }
+
+    public void setExercicios(List<Exercicio> exercicios) {
+        this.exercicios = exercicios;
+    }
+
+
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
         this.id = id;
-    }*/
+    }
+
+    public boolean isDisponibilidade() {
+        return disponibilidade;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -69,19 +92,19 @@ public class Licao {
         this.categoria = categoria;
     }
 
-  /*  public int getTempoEstimado() {
+    public int getTempoEstimado() {
         return tempoEstimado;
     }
 
     public void setTempoEstimado(int tempoEstimado) {
         this.tempoEstimado = tempoEstimado;
-    }*/
+    }
 
-    public String getDisponibilidade() {
+    public boolean getDisponibilidade() {
         return disponibilidade;
     }
 
-    public void setDisponibilidade(String disponibilidade) {
+    public void setDisponibilidade(boolean disponibilidade) {
         this.disponibilidade = disponibilidade;
     }
 }

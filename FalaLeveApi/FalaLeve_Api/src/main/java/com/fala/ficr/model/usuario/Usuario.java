@@ -1,16 +1,15 @@
 package com.fala.ficr.model.usuario;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @MappedSuperclass
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private UUID id;
     @Column(nullable = false, length = 200)
     private String nome;
@@ -19,11 +18,19 @@ public class Usuario {
     @Column(nullable = false, length = 100)
     private String senha;
     @Column(nullable = false, length = 50)
-    private String dataNascimento;
+    private LocalDateTime dataAcesso;
+    @Column(nullable = false, length = 50)
+    private LocalDateTime ultimoAcesso;
     @Column(length = 50)
     private String statusAtivo;
-    @Column(length = 50)
-    private String dataCriacaoConta;
+
+
+    @PrePersist
+    protected void onCreate() {
+        this.dataAcesso = LocalDateTime.now();
+        this.ultimoAcesso = LocalDateTime.now();
+        this.statusAtivo = "ATIVO";
+    }
 
     public void setStatusAtivo(String statusAtivo) {
         this.statusAtivo = statusAtivo;
@@ -44,15 +51,6 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
 
     public String getEmail() {
         return email;
