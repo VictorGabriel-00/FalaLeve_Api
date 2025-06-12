@@ -1,32 +1,31 @@
 package com.fala.ficr.model.comunicacao;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "TB_SIMBOLO")
 public class Simbolo {
     @Id
-    @Column(length = 50, nullable = false, unique = true)
-    private int idSimbolo;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID idSimbolo;
     @Column(length = 200, nullable = false)
     private String descricaoSimbolo;
     @Column(length = 200, nullable = false)
     private String categoriaSimbolo;
-    @Column(length = 200, nullable = false, unique = true)
+    @Column(length = 200, nullable = false)
     private String URLImagemSimbolo;
-    @Column(length = 200, nullable = false, unique = true)
+    @Column(length = 200, nullable = false)
     private String URLaudioSimbolo;
     @Column(length = 200, nullable = false)
     private String tagsSimbolo;
 
-    public int getIdSimbolo() {
+    public UUID getIdSimbolo() {
         return idSimbolo;
     }
 
-    public void setIdSimbolo(int idSimbolo) {
+    public void setIdSimbolo(UUID idSimbolo) {
         this.idSimbolo = idSimbolo;
     }
 

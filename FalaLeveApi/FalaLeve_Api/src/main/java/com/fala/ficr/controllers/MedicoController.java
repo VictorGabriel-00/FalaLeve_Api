@@ -14,13 +14,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
+@RequestMapping("/medico")
 public class MedicoController {
     @Autowired
     MedicoRepository medicoRepository;
 
-    @PostMapping("/medico")
+    @PostMapping
     public ResponseEntity<Medico> saveMedico(@RequestBody @Valid MedicoRecordDto medicoRecordDto){
         var medicoAdm = new Medico();
         BeanUtils.copyProperties(medicoRecordDto, medicoAdm);
@@ -28,12 +30,12 @@ public class MedicoController {
     }
 
 
-    @GetMapping("/medico")
+    @GetMapping
     public ResponseEntity<List<Medico>> getMedicos(){
         return ResponseEntity.status(HttpStatus.OK).body(medicoRepository.findAll());
     }
 
-    @GetMapping ("/medico/{id}")
+    @GetMapping ("/{id}")
     public ResponseEntity<Object> getOneMedico(@PathVariable(value = "id") UUID id){
         Optional<Medico> medicoOp = medicoRepository.findById(id);
         if(medicoOp.isEmpty()){
@@ -42,8 +44,7 @@ public class MedicoController {
         return ResponseEntity.status(HttpStatus.OK).body(medicoOp.get());
     }
 
-
-    @PutMapping("/medico/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object>upMedico(@PathVariable(value = "id") UUID id,
                                @RequestBody @Valid MedicoRecordDto medicoRecordDto){
 
@@ -57,7 +58,7 @@ public class MedicoController {
         return ResponseEntity.status(HttpStatus.OK).body(medicoRepository.save(medicoAdm));
     }
 
-    @DeleteMapping("/medico/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteMedico(@PathVariable(value = "id") UUID id){
         Optional<Medico> medicoOp = medicoRepository.findById(id);
         if(medicoOp.isEmpty()){

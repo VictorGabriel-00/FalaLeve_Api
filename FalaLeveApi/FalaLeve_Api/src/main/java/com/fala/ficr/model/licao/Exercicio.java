@@ -1,26 +1,48 @@
 package com.fala.ficr.model.licao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "TB_EXERCICIO")
-public class Exercicio extends Licao{
-    //private int idExercicio;
+public class Exercicio{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID idExercicio;
+    @Column(nullable = false, length = 50)
     private String nomeExercicio;
+    @Column(nullable = false, length = 50)
     private String descricaoExercicio;
+    @Column(nullable = false, length = 50)
     private String tipoExercicio;
+    @Column(nullable = false, length = 50)
     private String instrucaoExercicio;
+    @Column(nullable = false, length = 50)
     private int tempoExercicio;
 
+    @ManyToOne
+    @JoinColumn(name = "licao_id")
+    @JsonIgnore
+    private Licao licao;
 
-    /*public int getIdExercicio() {
+    public Licao getLicao() {
+        return licao;
+    }
+
+    public void setLicao(Licao licao) {
+        this.licao = licao;
+    }
+
+    public UUID getIdExercicio() {
         return idExercicio;
     }
 
-    public void setIdExercicio(int idExercicio) {
+    public void setIdExercicio(UUID idExercicio) {
         this.idExercicio = idExercicio;
-    }*/
+    }
 
     public String getNomeExercicio() {
         return nomeExercicio;
