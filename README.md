@@ -300,7 +300,7 @@ CREATE INDEX in_Usuario_Ativo ON Usuario(nome, ativo);
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Linguagem:** Java 17
+* **Linguagem:** Java 24
 * **Framework:** Spring Boot 3
 * **Acesso a Dados:** Spring Data JPA
 * **Banco de Dados:** PostgreSQL
@@ -312,7 +312,7 @@ CREATE INDEX in_Usuario_Ativo ON Usuario(nome, ativo);
 Siga os passos abaixo para configurar e executar o projeto em seu ambiente local.
 
 **Pré-requisitos:**
-* JDK 17 ou superior.
+* JDK 24 ou superior.
 * Maven 3.8 ou superior.
 * Uma instância do PostgreSQL rodando.
 
