@@ -1,20 +1,5 @@
 # FalaLeve API
 
-<p align="center">
-  <img src="https://i.imgur.com/gJ5B32p.png" alt="Logo do FalaLeve" width="200"/>
-</p>
-
-<p align="center">
-  <strong>Uma plataforma para desenvolver a fala e a comunicação simbólica, promovendo inclusão, independência e autonomia.</strong>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow.svg" alt="Status do Projeto">
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Licença">
-</p>
-
----
-
 ## 📝 Sumário
 
 * [Sobre o Projeto](#-sobre-o-projeto)
