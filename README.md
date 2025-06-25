@@ -1,79 +1,83 @@
-FalaLeve API
-📝 Sumário
-Sobre o Projeto
+# FalaLeve API
 
-Funcionalidades Principais
+<p align="center">
+  <img src="https://i.imgur.com/gJ5B32p.png" alt="Logo do FalaLeve" width="200"/>
+</p>
 
-Modelo de Negócio
+<p align="center">
+  <strong>Uma plataforma para desenvolver a fala e a comunicação simbólica, promovendo inclusão, independência e autonomia.</strong>
+</p>
 
-Estrutura do Banco de Dados
+<p align="center">
+  <img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow.svg" alt="Status do Projeto">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Licença">
+</p>
 
-Tecnologias Utilizadas
+---
 
-Como Executar a API
+## 📝 Sumário
 
-Colaboradores
+* [Sobre o Projeto](#-sobre-o-projeto)
+* [Funcionalidades Principais](#-funcionalidades-principais)
+* [Modelo de Negócio](#-modelo-de-negócio)
+* [Estrutura do Banco de Dados](#-estrutura-do-banco-de-dados)
+* [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+* [Como Executar a API](#-como-executar-a-api)
+* [Colaboradores](#-colaboradores)
+* [Licença](#-licença)
 
-Licença
+---
 
-🎯 Sobre o Projeto
-O FalaLeve é uma solução de tecnologia assistiva que atua como apoio complementar às terapias existentes para pessoas com dificuldades de comunicação (como autismo, afasia e paralisia cerebral). O objetivo é oferecer uma ferramenta robusta que garanta um acompanhamento eficaz e adaptado ao desenvolvimento de cada indivíduo, facilitando sua independência e organização diária.
+## 🎯 Sobre o Projeto
 
-Este repositório contém o código-fonte da API RESTful, que serve como o backend da plataforma, responsável por toda a lógica de negócio, gerenciamento de dados e comunicação com o banco de dados.
+O **FalaLeve** é uma solução de tecnologia assistiva que atua como apoio complementar às terapias existentes para pessoas com dificuldades de comunicação (como autismo, afasia e paralisia cerebral). O objetivo é oferecer uma ferramenta robusta que garanta um acompanhamento eficaz e adaptado ao desenvolvimento de cada indivíduo, facilitando sua independência e organização diária.
 
-O planejamento e a gestão do projeto podem ser acompanhados através do nosso Trello Board.
+Este repositório contém o código-fonte da **API RESTful**, que serve como o backend da plataforma, responsável por toda a lógica de negócio, gerenciamento de dados e comunicação com o banco de dados.
 
-✨ Funcionalidades Principais
+O planejamento e a gestão do projeto podem ser acompanhados através do nosso [**Trello Board**](https://trello.com/invite/b/67e3f25e9e44a0285bb824dc/ATTla9e4220e069887a95074f1de33eef050E31B1AA6/falaleve).
+
+## ✨ Funcionalidades Principais
+
 Com base em um levantamento detalhado com usuários e especialistas, as funcionalidades essenciais da API incluem:
 
-🗣️ Sistema de Comunicação Adaptável:
+* **🗣️ Sistema de Comunicação Adaptável:**
+    * Gerenciamento de um banco de símbolos (pictogramas) personalizável por usuário.
+    * Permite a combinação de símbolos para a formação de frases.
+    * Interface intuitiva para seleção e uso rápido dos símbolos.
 
-Gerenciamento de um banco de símbolos (pictogramas) personalizável por usuário.
+* **🧠 Módulo de Aprendizagem e Exercícios:**
+    * Estrutura hierárquica de lições e exercícios com níveis de dificuldade progressivos.
+    * Conteúdo que se adapta com base no progresso do usuário.
+    * Suporte a diferentes tipos de exercícios (múltipla escolha, arrastar e soltar, associação).
 
-Permite a combinação de símbolos para a formação de frases.
+* **👤 Gestão de Perfis Personalizáveis:**
+    * Diferenciação entre tipos de usuários: **Paciente** e **Médico/Terapeuta**.
+    * Configurações específicas e personalizadas para cada perfil.
 
-Interface intuitiva para seleção e uso rápido dos símbolos.
+* **📈 Sistema de Progresso e Recompensas:**
+    * Rastreamento individualizado do desenvolvimento de cada usuário.
+    * Registro de atividades concluídas, conquistas e XP (pontos de experiência).
+    * Sistema de recompensas (badges, itens virtuais) para engajamento e motivação.
 
-🧠 Módulo de Aprendizagem e Exercícios:
+* **🔗 Compartilhamento com Cuidadores e Profissionais:**
+    * Endpoints que permitem a visualização do progresso e das atividades do paciente por usuários autorizados (médicos).
 
-Estrutura hierárquica de lições e exercícios com níveis de dificuldade progressivos.
+## 💼 Modelo de Negócio
 
-Conteúdo que se adapta com base no progresso do usuário.
+* **Mercado Alvo:** Pessoas com dificuldades de comunicação, seus familiares, cuidadores e profissionais de saúde (fonoaudiólogos, terapeutas ocupacionais).
+* **Modelo de Receita:**
+    * **Freemium:** Versão gratuita com funcionalidades básicas.
+    * **Premium:** Assinatura para acesso a recursos avançados e personalização.
+    * **B2B:** Licenciamento para instituições de ensino e saúde.
 
-Suporte a diferentes tipos de exercícios (múltipla escolha, arrastar e soltar, associação).
+## 🗄️ Estrutura do Banco de Dados
 
-👤 Gestão de Perfis Personalizáveis:
+A arquitetura de dados foi modelada para suportar todas as funcionalidades da plataforma de forma relacional e escalável, utilizando PostgreSQL. O modelo agora centraliza as informações de perfis na tabela `Usuario` com um campo `tipo` para diferenciação.
 
-Diferenciação entre tipos de usuários: Paciente, Médico/Terapeuta e Cuidador.
+<details>
+<summary><strong>Clique para ver o Schema SQL completo (Criação, Inserção e Automação)</strong></summary>
 
-Configurações específicas e personalizadas para cada perfil.
-
-📈 Sistema de Progresso e Recompensas:
-
-Rastreamento individualizado do desenvolvimento de cada usuário.
-
-Registro de atividades concluídas, conquistas e XP (pontos de experiência).
-
-Sistema de recompensas (badges, itens virtuais) para engajamento e motivação.
-
-🔗 Compartilhamento com Cuidadores e Profissionais:
-
-Endpoints que permitem a visualização do progresso e das atividades do paciente por usuários autorizados (médicos e cuidadores).
-
-💼 Modelo de Negócio
-Mercado Alvo: Pessoas com dificuldades de comunicação, seus familiares, cuidadores e profissionais de saúde (fonoaudiólogos, terapeutas ocupacionais).
-
-Modelo de Receita:
-
-Freemium: Versão gratuita com funcionalidades básicas.
-
-Premium: Assinatura para acesso a recursos avançados e personalização.
-
-B2B: Licenciamento para instituições de ensino e saúde.
-
-🗄️ Estrutura do Banco de Dados
-A arquitetura de dados foi modelada para suportar todas as funcionalidades da plataforma de forma relacional e escalável, utilizando PostgreSQL. O modelo agora centraliza as informações de perfis na tabela Usuario com um campo tipo para diferenciação.
-
+```sql
 -- =================================================================
 -- CRIAÇÃO DO BANCO E DAS TABELAS
 -- =================================================================
@@ -306,66 +310,102 @@ $$ LANGUAGE plpgsql;
 -- Índice
 CREATE INDEX in_Usuario_Ativo ON Usuario(nome, ativo);
 
+```
+</details>
 
-🛠️ Tecnologias Utilizadas
-Linguagem: Java 17
+## 🛠️ Tecnologias Utilizadas
 
-Framework: Spring Boot 3
+* **Linguagem:** Java 17
+* **Framework:** Spring Boot 3
+* **Acesso a Dados:** Spring Data JPA
+* **Banco de Dados:** PostgreSQL
+* **Autenticação:** Spring Security + JWT
+* **Build Tool:** Maven
 
-Acesso a Dados: Spring Data JPA
+## 🚀 Como Executar a API
 
-Banco de Dados: PostgreSQL
-
-Autenticação: Spring Security + JWT
-
-Build Tool: Maven
-
-🚀 Como Executar a API
 Siga os passos abaixo para configurar e executar o projeto em seu ambiente local.
 
-Pré-requisitos:
+**Pré-requisitos:**
+* JDK 17 ou superior.
+* Maven 3.8 ou superior.
+* Uma instância do PostgreSQL rodando.
 
-JDK 17 ou superior.
+**Instalação:**
 
-Maven 3.8 ou superior.
+1.  Clone o repositório:
+    ```bash
+    git clone [https://github.com/VictorGabriel-00/FalaLeve_Api.git](https://github.com/VictorGabriel-00/FalaLeve_Api.git)
+    ```
 
-Uma instância do PostgreSQL rodando.
+2.  Acesse o diretório do projeto:
+    ```bash
+    cd FalaLeve_Api
+    ```
 
-Instalação:
+3.  No seu PostgreSQL, crie o banco de dados:
+    ```sql
+    CREATE DATABASE FalaLeve;
+    ```
+    > **Nota:** Os scripts para criação de tabelas e inserção de dados serão executados automaticamente pelo Spring Boot se configurado adequadamente, ou você pode executá-los manualmente.
 
-Clone o repositório:
+4.  Configure a conexão com o banco de dados no arquivo `application.properties` (localizado em `src/main/resources/`):
+    ```properties
+    spring.datasource.url=jdbc:postgresql://localhost:5432/falaleve
+    spring.datasource.username=[SEU_USUARIO]
+    spring.datasource.password=[SUA_SENHA]
+    spring.jpa.hibernate.ddl-auto=update
+    ```
 
-git clone https://github.com/VictorGabriel-00/FalaLeve_Api.git
+5.  Construa o projeto com o Maven:
+    ```bash
+    mvn clean install
+    ```
 
-Acesse o diretório do projeto:
+6.  Execute a aplicação:
+    ```bash
+    mvn spring-boot:run
+    ```
 
-cd FalaLeve_Api
+A API estará disponível por padrão em `http://localhost:8080`.
 
-No seu PostgreSQL, crie o banco de dados:
+## 🤝 Colaboradores
 
-CREATE DATABASE FalaLeve;
+Este projeto é o resultado do trabalho e da dedicação de uma equipe incrível. Conheça quem fez o **FalaLeve** acontecer:
 
-Nota: Os scripts para criação de tabelas e inserção de dados serão executados automaticamente pelo Spring Boot se configurado adequadamente, ou você pode executá-los manualmente.
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/MariTronix">
+        <img src="https://github.com/MariTronix.png" width="100px;" alt="Foto de Mariana Mendes no GitHub"/>
+        <br />
+        <sub><b>Mariana Mendes</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Marcopolojr360">
+        <img src="https://github.com/Marcopolojr360.png" width="100px;" alt="Foto de Marcos Paulo no GitHub"/>
+        <br />
+        <sub><b>Marcos Paulo</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Raicalira">
+        <img src="https://github.com/Raicalira.png" width="100px;" alt="Foto de Raica Lira no GitHub"/>
+        <br />
+        <sub><b>Raica Lira</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/VictorGabriel-00">
+        <img src="https://github.com/VictorGabriel-00.png" width="100px;" alt="Foto de Victor Gabriel no GitHub"/>
+        <br />
+        <sub><b>Victor Gabriel</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-Configure a conexão com o banco de dados no arquivo application.properties (localizado em src/main/resources/):
+## 📜 Licença
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/falaleve
-spring.datasource.username=[SEU_USUARIO]
-spring.datasource.password=[SUA_SENHA]
-spring.jpa.hibernate.ddl-auto=update
-
-Construa o projeto com o Maven:
-
-mvn clean install
-
-Execute a aplicação:
-
-mvn spring-boot:run
-
-A API estará disponível por padrão em http://localhost:8080.
-
-🤝 Colaboradores
-Este projeto é o resultado do trabalho e da dedicação de uma equipe incrível. Conheça quem fez o FalaLeve acontecer:
-
-📜 Licença
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
