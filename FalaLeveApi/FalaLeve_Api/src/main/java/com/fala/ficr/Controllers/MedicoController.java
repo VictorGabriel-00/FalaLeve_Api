@@ -1,9 +1,11 @@
 package com.fala.ficr.Controllers;
 
+import ch.qos.logback.core.model.processor.PhaseIndicator;
 import com.fala.ficr.Model.usuario.Medico;
 import com.fala.ficr.Dto.MedicoRecordDto;
 import com.fala.ficr.Repositories.MedicoRepository;
 import com.fala.ficr.Services.MedicoServices;
+import com.fala.ficr.Services.PacienteNaoVerbalService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,17 @@ import java.util.UUID;
 public class MedicoController {
     @Autowired
     MedicoServices medicoServices;
+
+    @PutMapping("{idMedico}/assumir/{idPaciente}")
+    public ResponseEntity<String> assumirPaciente(@PathVariable UUID idMedico, @PathVariable UUID idPaciente){
+        boolean sucesso = medicoServices.assumirPaciente(idMedico, idPaciente);
+
+        if (sucesso) {
+            return ResponseEntity.ok("Paciente vinculado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Médico ou Paciente não encontrados.");
+        }
+    }
 
     @PostMapping
     public ResponseEntity<Medico> saveMedico(@RequestBody @Valid MedicoRecordDto medicoRecordDto){

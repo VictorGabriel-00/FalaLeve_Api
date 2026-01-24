@@ -16,10 +16,21 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/simbolo")
+@CrossOrigin(origins = "*")
 public class SimboloController {
 
     @Autowired
     SimboloRepository simboloRepository;
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarSimbolo(@PathVariable UUID id) {
+        if (simboloRepository.existsById(id)) {
+            simboloRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @PostMapping
     public ResponseEntity<Simbolo> saveSimbolo(@RequestBody @Valid SimboloDTO simboloDto) {
@@ -54,15 +65,7 @@ public class SimboloController {
         return ResponseEntity.status(HttpStatus.OK).body(simboloRepository.save(simbolo));
     }
 
-    @DeleteMapping("{id}")
-    public ResponseEntity<Object> deleteSimbolo(@PathVariable(value = "id") UUID id){
-        Optional<Simbolo> simboloOp = simboloRepository.findById(id);
-        if(simboloOp.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Simbolo não encontrado");
-        }
-        simboloRepository.delete(simboloOp.get());
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
+
 
 
 }

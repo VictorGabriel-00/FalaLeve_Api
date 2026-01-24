@@ -18,8 +18,11 @@ public class Simbolo {
     private String URLImagemSimbolo;
     @Column(length = 200, nullable = false)
     private String URLaudioSimbolo;
-    @Column(length = 200, nullable = false)
+    @Column(length = 200, nullable = true)
     private String tagsSimbolo;
+
+
+
 
     public UUID getIdSimbolo() {
         return idSimbolo;

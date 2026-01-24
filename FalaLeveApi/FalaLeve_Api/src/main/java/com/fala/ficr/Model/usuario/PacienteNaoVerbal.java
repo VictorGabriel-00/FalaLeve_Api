@@ -1,6 +1,7 @@
 package com.fala.ficr.Model.usuario;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
@@ -17,6 +18,7 @@ public class PacienteNaoVerbal extends Usuario {
     private String configuracao;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "medico_id")
+    @JsonIgnore
     private Medico medico;
 
     public Medico getMedico() {
